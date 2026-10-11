@@ -2,45 +2,60 @@
 
 Website for **Atelier Suflé**: one-to-one flute lessons with Suhsuan Wang in Bonn, Köln and online, in English, German and Chinese.
 
-A static site: plain HTML, CSS and JavaScript, no build step.
+Static site, no framework. A small Python script (no dependencies) generates the three language pages from one template.
 
 ```
-index.html          Home page (EN / DE / 中文, switched in the page)
-impressum.html      Legal notice (required in Germany)
-datenschutz.html    Privacy policy (required in Germany)
-assets/brand/       Logo and flute drawings
-assets/photos/      Photos of Suhsuan
-assets/fonts/       Self-hosted fonts (no requests to Google, GDPR-friendly)
-assets/og-image.jpg Preview image for WhatsApp, Instagram, etc.
-favicon.png, apple-touch-icon.png
+index.html, de/index.html, zh/index.html   Generated pages (do not edit by hand)
+impressum.html, datenschutz.html           Legal pages (German law), edited by hand
+src/content.py                             All texts in EN / DE / 中文 + optional sections
+src/template.html                          Page structure
+src/build.py                               Generates the pages, sitemap.xml and robots.txt
+assets/css/site.css, assets/js/site.js     Styles and behaviour
+assets/photos/                             Photos in WebP + JPEG, two sizes each
+assets/audio/                              Flute notes B, A, G and "Mary Had a Little Lamb"
+assets/fonts/                              Self-hosted fonts (no requests to Google)
 ```
+
+## Editing
+
+1. Change texts in `src/content.py` (or structure in `src/template.html`).
+2. Run `python3 src/build.py`.
+3. Commit and push. GitHub Pages republishes automatically.
+
+### Optional sections (kept off the site until real content exists)
+
+In `src/content.py`, `OPTIONAL`:
+
+- `testimonials`: real, authorised quotes only. Never invent them.
+- `philosophy`: Suhsuan's teaching philosophy in her own words, per language.
+- `recordings`: her own recordings (MP3 in `assets/audio/`).
+
+Fill one in, rebuild, and the section appears.
 
 ## Before going live
 
-1. **Impressum and Datenschutz**: replace every highlighted `[placeholder]` (postal address, optional phone, VAT ID if any, photographers, date). German law requires a real postal address in the Impressum. These texts are a starting point, not legal advice; a check with a generator such as eRecht24 is recommended.
-2. **Contact form**: it sends requests to `hsuan41213@gmail.com` through [FormSubmit](https://formsubmit.co). The very first time someone sends the form, FormSubmit emails Suhsuan a confirmation link. She clicks it once, and from then on every request arrives in her inbox.
-3. **Translations**: have Suhsuan proofread the German and Chinese texts (in `index.html`, inside the `T = { de: {...}, zh: {...} }` block).
+1. **Impressum / Datenschutz**: replace every highlighted `[placeholder]` (postal address is required by law, VAT ID if any, photographers, date). These texts are a starting point, not legal advice.
+2. **Contact form**: requests go to `hsuan41213@gmail.com` through [FormSubmit](https://formsubmit.co). The first submission sends Suhsuan a one-time confirmation link; she must click it.
+3. **Proofreading**: Suhsuan should read the German and Chinese texts, and confirm the "How to start" steps.
 
 ## Publish with GitHub Pages (free)
 
-1. Push these files to the root of a GitHub repository named `atelier-sufle`.
-2. On GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `main`, folder `/ (root)` → Save**.
-3. After about a minute the site is live at `https://reissfuji006.github.io/atelier-sufle/`.
+1. Push this folder's contents to the root of a public repository `atelier-sufle`.
+2. **Settings → Pages → Deploy from a branch → `main` / `(root)` → Save**.
+3. Live at `https://reissfuji006.github.io/atelier-sufle/` (also `/de/` and `/zh/`).
+4. Submit `sitemap.xml` in Google Search Console, and add the site link to the Instagram bio.
 
 ## Own domain (optional)
 
-If you buy a domain (for example `ateliersufle.com`):
-
-1. In **Settings → Pages → Custom domain**, enter the domain and save; tick **Enforce HTTPS** once it is available.
-2. At the domain registrar, point the domain to GitHub Pages ([GitHub's guide](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)).
-3. In `index.html`, replace `https://reissfuji006.github.io/atelier-sufle/` with the new address (in the `og:` tags and the JSON-LD block).
-
-## Editing the content
-
-- **Text**: the English text is in the HTML. German and Chinese translations are in the `T` object near the bottom of `index.html`, keyed by the same `data-i18n` names.
-- **Language links**: `?lang=de` or `?lang=zh` at the end of the address opens the site directly in that language (handy for sharing). Without it, the site follows the visitor's last choice, then their browser language.
-- **Photos**: replace the files in `assets/photos/`, keeping the same names (or update the `src` in `index.html`).
+Add it in **Settings → Pages → Custom domain**, point the DNS to GitHub Pages, then change `SITE_URL` in `src/content.py` and rebuild.
 
 ## Sound
 
-`assets/audio/` holds the flute notes B4, A4, G4 and the tune *Mary Had a Little Lamb* (B A G A B B B) used by the music staff at the top of the page. They are made from a real flute recording (A4) from the [tonejs-instruments](https://github.com/Makefully-Studios/tonejs-instruments) sample set (npm package `tonejs-instrument-flute-mp3`, MIT license), pitched to B and G with a light room reverb. For an even more personal touch, these four files can be replaced by recordings of Suhsuan playing the same notes (same file names, MP3).
+The flute samples are made from a real flute recording (A4) from the [tonejs-instruments](https://github.com/Makefully-Studios/tonejs-instruments) set (npm `tonejs-instrument-flute-mp3`, MIT), pitched to B and G with a light reverb. Recordings of Suhsuan playing the same notes can replace them (same file names).
+
+## Quality checks run before delivery
+
+- html-validate: no errors on all 5 pages.
+- axe-core (WCAG 2.0/2.1/2.2 A + AA, best practices): no violations on all pages at 390 px and 1280 px.
+- Lighthouse (mobile, local server): Performance 94, Accessibility 100, Best Practices 100, SEO 100.
+- Playwright: layout at 390 / 768 / 1280 px in 3 languages, form validation and sending (simulated service), audio, keyboard use, links.
