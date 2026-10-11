@@ -270,6 +270,37 @@ figcaption { font-size: .86rem; color: var(--muted); margin-top: 10px; }
 .foot-logo { height: 36px; width: auto; }
 .foot nav { display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center; }
 
+/* Log in button (header) */
+.login-btn { gap: 8px; }
+.login-ico { flex: none; }
+@media (max-width: 640px) {
+  .login-btn { min-height: 36px; min-width: 36px; padding: 4px 8px; border-color: var(--line); }
+  .login-txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .langs a { min-width: 34px; padding: 4px 5px; }
+}
+
+/* News & events (replaces the FAQ) */
+.news-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.news-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: grid; grid-template-rows: auto 1fr; }
+.news-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.news-body { padding: 20px 22px 22px; display: grid; gap: 8px; align-content: start; }
+.news-body time { font-size: .78rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--orange-text); }
+.news-body h3 { font-family: var(--display); font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
+.news-body p { color: var(--muted); }
+.news-more { justify-self: start; font-weight: 500; margin-top: 4px; }
+.news-empty { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; padding: clamp(22px, 4vw, 34px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.news-empty p { color: var(--muted); max-width: 36em; font-size: 1.08rem; }
+@media (max-width: 900px) { .news-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .news-list { grid-template-columns: 1fr; } }
+
+/* Custom sections added from the admin mode */
+.custom-grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(36px, 6vw, 88px); align-items: center; }
+.custom.no-photo .custom-grid { grid-template-columns: minmax(0, 46rem); }
+.custom-photo { margin: 0; }
+.custom-photo img { border-radius: var(--radius); width: 100%; }
+.custom-text { display: grid; gap: 18px; justify-items: start; }
+@media (max-width: 900px) { .custom-grid { grid-template-columns: 1fr; } }
+
 /* Mobile booking bar */
 .mobile-cta { display: none; }
 @media (max-width: 640px) {

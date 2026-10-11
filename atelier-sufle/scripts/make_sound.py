@@ -1,6 +1,6 @@
 """Soft, sweet soprano-recorder voice by additive synthesis.
 
-Usage: python3 src/make_sound.py assets/audio 2 0.46   (output dir, octave factor, beat in seconds)
+Usage: python3 scripts/make_sound.py assets/audio 2 0.46   (output dir, octave factor, beat in seconds)
 
 Recorder acoustics: an almost pure tone (strong fundamental, weak 2nd/3rd harmonics), a short
 breathy "chiff" at the attack, a little steady breath noise, light or delayed vibrato.
