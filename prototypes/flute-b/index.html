@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Jost:wght@400;500;600&display=swap">
 <style>
-/* Layout: playful sections in soft brand tints (cream, slate blue, flute orange); a tappable music staff ("Alle meine Entchen") is the hero's centrepiece. Single light look by choice. */
+/* Layout: playful sections in soft brand tints (cream, slate blue, flute orange); a tappable music staff ("Twinkle Twinkle Little Star") is the hero's centrepiece. Single light look by choice. */
 :root {
   --bg: #FFFCF9;
   --ink: #2E3D55;
@@ -157,15 +157,15 @@ footer nav { display: flex; gap: 18px; }
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#top"><img src="brand/logo-mark.png" alt="Atelier Suflé" width="773" height="256"></a>
-    <nav class="main" aria-label="Hauptnavigation">
-      <a href="#kurse">Angebot</a>
-      <a href="#stunde">Eine Stunde</a>
-      <a href="#lehrerin">Lehrerin</a>
-      <a href="#kontakt">Kontakt</a>
+    <nav class="main" aria-label="Main navigation">
+      <a href="#lessons">Lessons</a>
+      <a href="#a-lesson">A lesson</a>
+      <a href="#teacher">Teacher</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <div class="langs" role="group" aria-label="Sprache">
-      <button type="button" aria-pressed="true">DE</button>
-      <button type="button" aria-pressed="false">EN</button>
+    <div class="langs" role="group" aria-label="Language">
+      <button type="button" aria-pressed="true">EN</button>
+      <button type="button" aria-pressed="false">DE</button>
       <button type="button" aria-pressed="false">中文</button>
     </div>
   </div>
@@ -175,69 +175,69 @@ footer nav { display: flex; gap: 18px; }
   <section class="hero">
     <div class="wrap">
       <div>
-        <p class="tag">Flöte · Früherziehung · Musikraum</p>
-        <h1>Kleine Hände, <span>große Töne.</span></h1>
-        <p class="lead">Im Atelier Suflé entdecken Kinder die Musik: mit Flötenunterricht ab 5 Jahren und musikalischer Früherziehung für die Kleinsten. Auf Deutsch, Englisch oder Chinesisch.</p>
+        <p class="tag">Flute · Early music · Music space · Cologne</p>
+        <h1>Little hands, <span>big sounds.</span></h1>
+        <p class="lead">At Atelier Suflé in Cologne, children discover music: flute lessons from age 5 and early childhood music for the little ones. In English, German or Mandarin.</p>
         <div class="actions">
-          <a class="btn" href="#kontakt">Gratis-Probestunde</a>
-          <a class="btn alt" href="#stunde">So läuft eine Stunde</a>
+          <a class="btn" href="#contact">Free trial lesson</a>
+          <a class="btn alt" href="#a-lesson">What a lesson looks like</a>
         </div>
       </div>
       <div class="staff-card">
-        <header><b>Probier mal! Tippe auf die Noten.</b><button class="play" type="button" id="play">▶ Anhören</button></header>
-        <svg class="staff" viewBox="0 0 600 170" role="group" aria-label="Notenzeile: Alle meine Entchen">
+        <header><b>Try it! Tap the notes.</b><button class="play" type="button" id="play">▶ Listen</button></header>
+        <svg class="staff" viewBox="0 0 600 170" role="group" aria-label="Music staff: Twinkle Twinkle Little Star">
           <line class="l" x1="20" x2="580" y1="40" y2="40"/>
           <line class="l" x1="20" x2="580" y1="56" y2="56"/>
           <line class="l" x1="20" x2="580" y1="72" y2="72"/>
           <line class="l" x1="20" x2="580" y1="88" y2="88"/>
           <line class="l" x1="20" x2="580" y1="104" y2="104"/>
-          <line class="l" x1="390" x2="390" y1="40" y2="104"/>
+          <line class="l" x1="330" x2="330" y1="40" y2="104"/>
           <line class="l" x1="580" x2="580" y1="40" y2="104"/>
           <g id="notes"></g>
         </svg>
-        <p>„Alle meine Entchen“, eines der ersten Lieder im Unterricht.</p>
+        <p>“Twinkle Twinkle Little Star”, one of the first songs in lessons.</p>
       </div>
     </div>
   </section>
 
-  <section class="block" id="kurse">
+  <section class="block" id="lessons">
     <div class="wrap">
       <div class="head">
-        <p class="tag">Angebot</p>
-        <h2>Für jedes Alter das Richtige</h2>
-        <p class="lead">Für kleine Kinder gibt es Querflöten mit gebogenem Kopfstück. Damit reichen auch kurze Arme bequem bis zu den Klappen.</p>
+        <p class="tag">Lessons</p>
+        <h2>Something for every age</h2>
+        <p class="lead">Small children play flutes with a curved headjoint, so even short arms can comfortably reach the keys.</p>
       </div>
       <div class="ages">
-        <article class="age"><span class="badge">3 – 5 Jahre</span><h3>Musikzwerge</h3><p>Musikalische Früherziehung: singen, tanzen, trommeln und hören. Der sanfte Weg zum ersten Instrument.</p><small>45 Min. pro Woche</small></article>
-        <article class="age"><span class="badge">ab 5 Jahren</span><h3>Flöten-Entdecker</h3><p>Erste Töne, Noten lesen, schöner Klang und erste Duette. Auch für Jugendliche und Eltern.</p><small>30 – 60 Min. pro Woche</small></article>
-        <article class="age"><span class="badge">für Familien</span><h3>Musikraum</h3><p>Kleine Vorspiele, Workshops und Musik-Nachmittage im Atelier, für die ganze Familie.</p><small>nach Ankündigung</small></article>
+        <article class="age"><span class="badge">Ages 3 – 5</span><h3>Little Musicians</h3><p>Early childhood music: singing, dancing, drumming and listening. The gentle way to a first instrument.</p><small>45 min per week</small></article>
+        <article class="age"><span class="badge">From age 5</span><h3>Flute Explorers</h3><p>First notes, reading music, a beautiful tone and first duets. Teens and parents welcome too.</p><small>30 – 60 min per week</small></article>
+        <article class="age"><span class="badge">For families</span><h3>Music Space</h3><p>Small recitals, workshops and music afternoons at the atelier, for the whole family.</p><small>Dates on Instagram</small></article>
       </div>
     </div>
   </section>
 
-  <section class="block lesson" id="stunde">
+  <section class="block lesson" id="a-lesson">
     <div class="wrap">
       <div class="head">
-        <p class="tag">Eine Unterrichtsstunde (30 Min.)</p>
-        <h2>So läuft eine Stunde ab</h2>
+        <p class="tag">A 30-minute lesson</p>
+        <h2>What happens in a lesson</h2>
       </div>
       <ol class="flow">
-        <li><span class="min">5 Min.</span><h3>Aufwärmen</h3><p>Atemspiele mit Seifenblasen und Federn.</p></li>
-        <li><span class="min">10 Min.</span><h3>Neues lernen</h3><p>Ein neuer Ton oder Rhythmus, Schritt für Schritt.</p></li>
-        <li><span class="min">10 Min.</span><h3>Lieblingslied</h3><p>Wir spielen gemeinsam, oft im Duett mit der Lehrerin.</p></li>
-        <li><span class="min">5 Min.</span><h3>Übeplan &amp; Sticker</h3><p>Ein kleiner Plan für zu Hause, und ein Sticker zur Belohnung.</p></li>
+        <li><span class="min">5 min</span><h3>Warm-up</h3><p>Breathing games with soap bubbles and feathers.</p></li>
+        <li><span class="min">10 min</span><h3>Something new</h3><p>A new note or rhythm, one step at a time.</p></li>
+        <li><span class="min">10 min</span><h3>Favourite song</h3><p>We play together, often as a duet with the teacher.</p></li>
+        <li><span class="min">5 min</span><h3>Practice plan &amp; sticker</h3><p>A short plan for home, and a sticker as a reward.</p></li>
       </ol>
     </div>
   </section>
 
-  <section class="block teacher" id="lehrerin">
+  <section class="block teacher" id="teacher">
     <div class="wrap">
-      <div class="photo" role="img" aria-label="Platzhalter für ein Foto der Lehrerin"><span class="ph">Foto: Lehrerin mit Kind</span></div>
+      <div class="photo" role="img" aria-label="Placeholder for a photo of the teacher"><span class="ph">Photo: teacher with a child</span></div>
       <div class="text">
-        <p class="tag">Deine Lehrerin</p>
-        <h2>Hallo, ich bin [Name]!</h2>
-        <p>Ich komme aus Taiwan, spiele Flöte seit meiner Kindheit und liebe es, Kindern Musik beizubringen. Bei mir darf gelacht, ausprobiert und auch mal falsch gespielt werden. So wächst die Freude am Instrument.</p>
-        <div class="bubbles" aria-label="Unterrichtssprachen"><span>Hallo!</span><span>Hello!</span><span>你好！</span></div>
+        <p class="tag">Your teacher</p>
+        <h2>Hi, I'm [Name]!</h2>
+        <p>I come from Taiwan, have played the flute since I was a child, and now teach in Cologne. I love teaching music to children. In my lessons, laughing, trying things out and the odd wrong note are all welcome. That's how the joy of playing grows.</p>
+        <div class="bubbles" aria-label="Teaching languages"><span>Hello!</span><span>Hallo!</span><span>你好！</span></div>
         <img class="flute-line" src="brand/flute-h.png" alt="" width="800" height="41">
       </div>
     </div>
@@ -246,13 +246,13 @@ footer nav { display: flex; gap: 18px; }
   <section class="block" style="padding-top:0">
     <div class="wrap">
       <div class="head">
-        <p class="tag">Für Eltern</p>
-        <h2>Gut informiert, ganz entspannt</h2>
+        <p class="tag">For parents</p>
+        <h2>Always in the loop</h2>
       </div>
       <div class="parents">
-        <div><h3>Fester Wochentermin</h3><p>Ein verlässlicher Termin, der zum Familienalltag passt.</p></div>
-        <div><h3>Kurzes Feedback</h3><p>Nach jeder Stunde wissen Sie, was geübt wurde und was als Nächstes kommt.</p></div>
-        <div><h3>Kleine Vorspiele</h3><p>Ein- bis zweimal im Jahr zeigen die Kinder stolz, was sie gelernt haben.</p></div>
+        <div><h3>A fixed weekly slot</h3><p>A reliable time that fits into family life.</p></div>
+        <div><h3>Quick feedback</h3><p>After each lesson you know what was practised and what comes next.</p></div>
+        <div><h3>Small recitals</h3><p>Once or twice a year, children proudly show what they have learned.</p></div>
       </div>
     </div>
   </section>
@@ -260,41 +260,41 @@ footer nav { display: flex; gap: 18px; }
   <section class="block" style="padding-top:0">
     <div class="wrap">
       <div class="insta-head">
-        <div class="head" style="margin:0"><p class="tag">Instagram</p><h2>Neues aus dem Unterricht</h2></div>
-        <a class="btn alt" href="https://instagram.com" target="_blank" rel="noopener">@atelier.sufle folgen</a>
+        <div class="head" style="margin:0"><p class="tag">Instagram</p><h2>News from the atelier</h2></div>
+        <a class="btn alt" href="https://instagram.com" target="_blank" rel="noopener">Follow @atelier.sufle</a>
       </div>
-      <div class="insta" aria-label="Platzhalter für Instagram-Fotos">
+      <div class="insta" aria-label="Placeholder for Instagram photos">
         <div aria-hidden="true">♪</div><div aria-hidden="true">♫</div><div aria-hidden="true">♩</div>
         <div aria-hidden="true">♬</div><div aria-hidden="true">♪</div><div aria-hidden="true">♫</div>
       </div>
     </div>
   </section>
 
-  <section class="block contact" id="kontakt">
+  <section class="block contact" id="contact">
     <div class="wrap">
       <div>
-        <p class="tag">Kontakt</p>
-        <h2>Lust auf die erste Flötenstunde?</h2>
-        <p class="lead">Die Probestunde (30 Min.) ist kostenlos. Ich antworte innerhalb von zwei Werktagen.</p>
+        <p class="tag">Contact</p>
+        <h2>Ready for a first flute lesson?</h2>
+        <p class="lead">The 30-minute trial lesson is free. I reply within two working days.</p>
         <dl>
-          <div><dt>E-Mail</dt><dd>hallo@atelier-sufle.example</dd></div>
-          <div><dt>Instagram</dt><dd>@atelier.sufle (Platzhalter)</dd></div>
-          <div><dt>Ort</dt><dd>[Stadt] · Studio oder Hausbesuch</dd></div>
+          <div><dt>Email</dt><dd>hello@atelier-sufle.example</dd></div>
+          <div><dt>Instagram</dt><dd>@atelier.sufle (placeholder)</dd></div>
+          <div><dt>Location</dt><dd>Cologne-[district], Germany</dd></div>
         </dl>
       </div>
       <form id="contact-form" novalidate>
         <div class="row">
-          <label for="f-parent">Name (Elternteil)<input id="f-parent" name="parent" autocomplete="name"></label>
-          <label for="f-child">Vorname des Kindes<input id="f-child" name="child"></label>
+          <label for="f-parent">Parent's name<input id="f-parent" name="parent" autocomplete="name"></label>
+          <label for="f-child">Child's first name<input id="f-child" name="child"></label>
         </div>
         <div class="row">
-          <label for="f-age">Alter<select id="f-age" name="age"><option>5 – 7 Jahre</option><option>8 – 12 Jahre</option><option>13+ / Erwachsene</option></select></label>
-          <label for="f-lang">Sprache<select id="f-lang" name="lang"><option>Deutsch</option><option>English</option><option>中文</option></select></label>
+          <label for="f-age">Age<select id="f-age" name="age"><option>3 – 4 years</option><option>5 – 7 years</option><option>8 – 12 years</option><option>13+ / adult</option></select></label>
+          <label for="f-lang">Language<select id="f-lang" name="lang"><option>English</option><option>Deutsch</option><option>中文</option></select></label>
         </div>
-        <label for="f-mail">E-Mail<input id="f-mail" name="email" type="email" autocomplete="email"></label>
-        <label for="f-msg">Nachricht<textarea id="f-msg" name="message" placeholder="Wunschtage, Vorerfahrung …"></textarea></label>
-        <button class="btn" type="submit">Probestunde anfragen</button>
-        <p class="note" id="form-note">Prototyp: Das Formular wird noch nicht verschickt.</p>
+        <label for="f-mail">Email<input id="f-mail" name="email" type="email" autocomplete="email"></label>
+        <label for="f-msg">Message<textarea id="f-msg" name="message" placeholder="Preferred days, previous experience …"></textarea></label>
+        <button class="btn" type="submit">Request a trial lesson</button>
+        <p class="note" id="form-note">Prototype: this form doesn't send anything yet.</p>
       </form>
     </div>
   </section>
@@ -302,24 +302,25 @@ footer nav { display: flex; gap: 18px; }
 
 <footer>
   <div class="wrap">
-    <span>© Atelier Suflé</span>
-    <nav aria-label="Rechtliches"><a href="#top">Impressum</a><a href="#top">Datenschutz</a></nav>
+    <span>© Atelier Suflé · Cologne</span>
+    <nav aria-label="Legal"><a href="#top">Legal notice (Impressum)</a><a href="#top">Privacy</a></nav>
   </div>
 </footer>
 
 <script>
 (() => {
-  // "Alle meine Entchen", first bar: C D E F | G G (half notes)
+  // "Twinkle Twinkle Little Star": C C G G | A A G (half note); A5 sits on a ledger line
   const NS = 'http://www.w3.org/2000/svg';
   const melody = [
-    { x: 90,  y: 64, f: 523.25, s: 'Al-',   d: .45 },
-    { x: 165, y: 56, f: 587.33, s: 'le',    d: .45 },
-    { x: 240, y: 48, f: 659.25, s: 'mei-',  d: .45 },
-    { x: 315, y: 40, f: 698.46, s: 'ne',    d: .45 },
-    { x: 450, y: 32, f: 783.99, s: 'Ent-',  d: .9, half: true },
-    { x: 525, y: 32, f: 783.99, s: 'chen',  d: .9, half: true }
+    { x: 70,  y: 64, f: 523.25, s: 'Twin-', d: .45 },
+    { x: 135, y: 64, f: 523.25, s: 'kle',   d: .45 },
+    { x: 200, y: 32, f: 783.99, s: 'twin-', d: .45 },
+    { x: 265, y: 32, f: 783.99, s: 'kle',   d: .45 },
+    { x: 385, y: 24, f: 880.00, s: 'lit-',  d: .45, ledger: true },
+    { x: 450, y: 24, f: 880.00, s: 'tle',   d: .45, ledger: true },
+    { x: 525, y: 32, f: 783.99, s: 'star',  d: .9, half: true }
   ];
-  const colors = ['--orange', '--slate', '--orange', '--slate', '--orange', '--slate'];
+  const colors = ['--orange', '--slate', '--orange', '--slate', '--orange', '--slate', '--orange'];
   const g = document.getElementById('notes');
   const els = melody.map((n, i) => {
     const note = document.createElementNS(NS, 'g');
@@ -340,6 +341,12 @@ footer nav { display: flex; gap: 18px; }
     lyric.setAttribute('x', n.x); lyric.setAttribute('y', 150);
     lyric.textContent = n.s;
     note.append(stem, head, lyric);
+    if (n.ledger) {
+      const ledger = document.createElementNS(NS, 'line');
+      ledger.setAttribute('x1', n.x - 17); ledger.setAttribute('x2', n.x + 17);
+      ledger.setAttribute('y1', n.y); ledger.setAttribute('y2', n.y);
+      note.prepend(ledger);
+    }
     g.append(note);
     const go = () => play(n, note);
     note.addEventListener('click', go);
@@ -387,7 +394,7 @@ footer nav { display: flex; gap: 18px; }
     e.preventDefault();
     const note = document.getElementById('form-note');
     note.className = 'ok';
-    note.textContent = 'Danke! Auf der fertigen Website würde die Anfrage jetzt verschickt (Prototyp).';
+    note.textContent = 'Thank you! On the finished website, your request would be sent now (prototype).';
   });
 })();
 </script>
