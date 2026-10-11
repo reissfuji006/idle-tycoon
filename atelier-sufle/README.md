@@ -40,3 +40,7 @@ If you buy a domain (for example `ateliersufle.com`):
 - **Text**: the English text is in the HTML. German and Chinese translations are in the `T` object near the bottom of `index.html`, keyed by the same `data-i18n` names.
 - **Language links**: `?lang=de` or `?lang=zh` at the end of the address opens the site directly in that language (handy for sharing). Without it, the site follows the visitor's last choice, then their browser language.
 - **Photos**: replace the files in `assets/photos/`, keeping the same names (or update the `src` in `index.html`).
+
+## Sound
+
+`assets/audio/` holds the flute notes B4, A4, G4 and the tune *Mary Had a Little Lamb* (B A G A B B B) used by the music staff at the top of the page. They are made from a real flute recording (A4) from the [tonejs-instruments](https://github.com/Makefully-Studios/tonejs-instruments) sample set (npm package `tonejs-instrument-flute-mp3`, MIT license), pitched to B and G with a light room reverb. For an even more personal touch, these four files can be replaced by recordings of Suhsuan playing the same notes (same file names, MP3).

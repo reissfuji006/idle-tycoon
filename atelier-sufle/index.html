@@ -22,7 +22,7 @@
 {"@context":"https://schema.org","@type":"MusicSchool","name":"Atelier Suflé","url":"https://reissfuji006.github.io/atelier-sufle/","image":"https://reissfuji006.github.io/atelier-sufle/assets/og-image.jpg","email":"hsuan41213@gmail.com","founder":{"@type":"Person","name":"Suhsuan Wang","jobTitle":"Flautist and flute teacher","alumniOf":"Hochschule für Musik und Tanz Köln"},"areaServed":["Bonn","Köln"],"availableLanguage":["English","German","Chinese"],"sameAs":["https://www.instagram.com/ateliersufle.music/"]}
 </script>
 <style>
-/* Type: self-hosted Cormorant Garamond + Jost (matching the logo), system fonts for Chinese. Layout: playful sections in soft brand tints (cream, slate blue, flute orange); portrait in an arch with a tappable music staff ("Mary Had a Little Lamb") overlapping it. Single light look by choice. */
+/* Type: self-hosted Cormorant Garamond + Jost (matching the logo), system fonts for Chinese. Layout: playful sections in soft brand tints (cream, slate blue, flute orange); portrait in an arch with a tappable music staff ("Mary Had a Little Lamb" on B, A, G, real flute recordings) overlapping it. Single light look by choice. */
 :root {
   --bg: #FFFCF9;
   --ink: #2E3D55;
@@ -62,7 +62,9 @@ p { margin: 0; }
 .btn.alt { background: var(--orange); color: var(--ink); box-shadow: 0 4px 0 color-mix(in srgb, var(--orange) 55%, var(--ink)); }
 
 /* Header */
-header.top { padding-block: 14px; }
+header.top { padding-block: 12px; position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+[hidden] { display: none !important; }
+.btn.sm { font-size: .95rem; padding: 8px 16px; border-radius: 12px; }
 header.top .wrap { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 .logo { display: flex; align-items: center; text-decoration: none; margin-right: auto; }
 .logo img { height: 48px; width: auto; }
@@ -73,6 +75,14 @@ nav.main a:hover { color: var(--orange-ink); }
 .langs button { font: inherit; font-weight: 500; font-size: .85rem; border: 2px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 10px; padding: 2px 10px; cursor: pointer; }
 .langs button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--bg); }
 @media (max-width: 760px) { nav.main { display: none; } }
+@media (max-width: 640px) { .head-cta { display: none; } }
+.mobile-cta { display: none; }
+@media (max-width: 640px) {
+  .mobile-cta { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); transition: transform .25s; }
+  .mobile-cta .btn { flex: 1; justify-content: center; }
+  .mobile-cta.away { transform: translateY(110%); }
+  footer { padding-bottom: 76px; }
+}
 
 /* Hero */
 .hero { background: var(--cream); border-radius: 0 0 40px 40px; }
@@ -82,7 +92,7 @@ nav.main a:hover { color: var(--orange-ink); }
 .hero .actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .hero-visual { position: relative; min-width: 0; }
 .portrait { width: 100%; height: auto; max-width: 440px; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 72%; border-radius: 999px 999px 28px 28px; margin-left: auto; background: #FFFFFF; }
-.staff-card { background: var(--bg); border-radius: 26px; padding: 18px 18px 14px; box-shadow: 0 18px 40px -22px var(--ink); position: absolute; left: -12%; bottom: -44px; width: min(430px, 92%); min-width: 0; }
+.staff-card { background: var(--bg); border-radius: 26px; padding: 18px 18px 14px; box-shadow: 0 18px 40px -22px var(--ink); position: absolute; left: -12%; top: calc(100% - 196px); width: min(430px, 92%); min-width: 0; }
 .staff-card header { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
 .staff-card header b { font-family: var(--display); font-weight: 600; font-size: 1.35rem; }
 .play { font: inherit; font-weight: 500; font-size: .95rem; border: 0; border-radius: 999px; padding: 6px 14px; background: var(--orange); color: var(--ink); cursor: pointer; }
@@ -91,11 +101,15 @@ svg.staff { width: 100%; height: auto; }
 .staff .note { cursor: pointer; }
 .staff .note ellipse { stroke: var(--ink); stroke-width: 2; transition: transform .15s; transform-box: fill-box; transform-origin: center; transform: rotate(-20deg); }
 .staff .note line { stroke: var(--ink); stroke-width: 2.2; }
-.staff .note text { font-family: var(--body); font-weight: 500; font-size: 17px; fill: var(--muted); text-anchor: middle; }
+.staff .note text { font-family: var(--body); font-weight: 500; font-size: 18px; fill: var(--muted); text-anchor: middle; }
 .staff .note:hover ellipse, .staff .note.on ellipse { transform: rotate(-20deg) scale(1.3); }
 .staff .note:focus-visible { outline: none; }
 .staff .note:focus-visible ellipse { stroke: var(--orange-deep); stroke-width: 3.5; }
 .staff-card p { font-size: .85rem; color: var(--muted); }
+.staff .note .nm { font-family: var(--body); font-weight: 600; font-size: 19px; text-anchor: middle; fill: var(--orange-ink); }
+.reward { display: flex; align-items: center; justify-content: space-between; gap: 10px 14px; flex-wrap: wrap; background: var(--orange-soft); border-radius: 16px; padding: 10px 12px; margin-top: 10px; }
+.staff-card .reward p { font-size: .98rem; font-weight: 500; color: var(--ink); flex: 1 1 180px; }
+@media (prefers-reduced-motion: no-preference) { .reward:not([hidden]) { animation: pop .35s ease-out; } @keyframes pop { from { transform: translateY(6px); opacity: .4; } } }
 @media (max-width: 860px) {
   .hero .wrap { grid-template-columns: 1fr; }
   .portrait { margin-inline: auto; max-width: 380px; }
@@ -206,6 +220,7 @@ footer nav { display: flex; gap: 18px; }
       <button type="button" data-lang="de" aria-pressed="false">DE</button>
       <button type="button" data-lang="zh" aria-pressed="false">中文</button>
     </div>
+    <a class="btn sm head-cta" href="#contact" data-i18n="cta.short">Book a lesson</a>
   </div>
 </header>
 
@@ -217,7 +232,7 @@ footer nav { display: flex; gap: 18px; }
         <h1 data-i18n="hero.title">Find your sound, <span>at any age.</span></h1>
         <p class="lead" data-i18n="hero.lead">Atelier Suflé is the flute studio of Suhsuan Wang, a flautist trained at the Hochschule für Musik und Tanz Köln. One-to-one lessons for children, teens and adults in Bonn, Köln and online, in English, German or Chinese.</p>
         <div class="actions">
-          <a class="btn" href="#contact" data-i18n="hero.cta1">Get in touch</a>
+          <a class="btn" href="#contact" data-i18n="hero.cta1">Book a first lesson</a>
           <a class="btn alt" href="#about" data-i18n="hero.cta2">Meet Suhsuan</a>
         </div>
       </div>
@@ -225,7 +240,7 @@ footer nav { display: flex; gap: 18px; }
         <img class="portrait" src="assets/photos/portrait.jpg" alt="Suhsuan Wang smiling, holding her flute" width="900" height="1350">
         <div class="staff-card">
           <header><b data-i18n="staff.title">Try it! Tap the notes.</b><button class="play" type="button" id="play" data-i18n="staff.play">▶ Listen</button></header>
-          <svg class="staff" viewBox="0 0 600 170" role="group" aria-label="Mary Had a Little Lamb">
+          <svg class="staff" viewBox="0 0 600 168" role="group" aria-label="Mary Had a Little Lamb">
             <line class="l" x1="20" x2="580" y1="40" y2="40"/>
             <line class="l" x1="20" x2="580" y1="56" y2="56"/>
             <line class="l" x1="20" x2="580" y1="72" y2="72"/>
@@ -235,7 +250,8 @@ footer nav { display: flex; gap: 18px; }
             <line class="l" x1="580" x2="580" y1="40" y2="104"/>
             <g id="notes"></g>
           </svg>
-          <p data-i18n="staff.caption">“Mary Had a Little Lamb”, one of the first songs on the flute.</p>
+          <p data-i18n="staff.caption">“Mary Had a Little Lamb” needs only B, A and G: the first three notes every flautist learns.</p>
+          <div class="reward" id="reward" hidden><p id="reward-text"></p><a class="btn sm" href="#contact" data-i18n="cta.book">Book a first lesson</a></div>
         </div>
       </div>
     </div>
@@ -350,6 +366,8 @@ footer nav { display: flex; gap: 18px; }
   </section>
 </main>
 
+<div class="mobile-cta" id="mobile-cta"><a class="btn" href="#contact" data-i18n="cta.book">Book a first lesson</a></div>
+
 <footer>
   <div class="wrap">
     <span>© <span id="year">2026</span> Atelier Suflé · Suhsuan Wang</span>
@@ -366,9 +384,9 @@ footer nav { display: flex; gap: 18px; }
       'hero.tag': 'Flöte · Bonn · Köln · Online',
       'hero.title': 'Flöte spielen, <span>in jedem Alter.</span>',
       'hero.lead': 'Atelier Suflé ist das Flötenstudio von Suhsuan Wang, Flötistin mit Abschluss an der Hochschule für Musik und Tanz Köln. Einzelunterricht für Kinder, Jugendliche und Erwachsene in Bonn, Köln und online, auf Englisch, Deutsch oder Chinesisch.',
-      'hero.cta1': 'Kontakt aufnehmen', 'hero.cta2': 'Suhsuan kennenlernen',
+      'hero.cta1': 'Erste Stunde anfragen', 'cta.book': 'Erste Stunde anfragen', 'cta.short': 'Stunde anfragen', 'hero.cta2': 'Suhsuan kennenlernen',
       'staff.title': 'Probier mal! Tippe auf die Noten.', 'staff.play': '▶ Anhören',
-      'staff.caption': '„Mary Had a Little Lamb“, eines der ersten Lieder auf der Flöte.',
+      'staff.caption': '„Mary Had a Little Lamb“ braucht nur H, A und G: die ersten drei Töne, die man auf der Flöte lernt.', 'rw.listen': 'Nur drei Töne, und schon ist es ein Lied. Lust, es selbst zu spielen?', 'rw.bravo': 'Bravo! Du hast gerade dein erstes Lied gespielt.',
       'f1.b': 'Jedes Alter', 'f1.s': 'Kinder, Jugendliche &amp; Erwachsene',
       'f2.b': '30 · 45 · 60 Min.', 'f2.s': 'Unterrichtsdauer',
       'f3.s': 'Unterricht in drei Sprachen',
@@ -403,9 +421,9 @@ footer nav { display: flex; gap: 18px; }
       'hero.tag': '長笛 · 波昂 · 科隆 · 線上',
       'hero.title': '吹出屬於你的聲音，<span>不分年齡。</span>',
       'hero.lead': 'Atelier Suflé 是長笛演奏家 Suhsuan Wang 的長笛工作室。她畢業於科隆音樂舞蹈學院，在波昂、科隆及線上為兒童、青少年和成人提供一對一長笛課程，可使用英文、德文或中文授課。',
-      'hero.cta1': '聯絡我', 'hero.cta2': '認識 Suhsuan',
+      'hero.cta1': '預約第一堂課', 'cta.book': '預約第一堂課', 'cta.short': '預約上課', 'hero.cta2': '認識 Suhsuan',
       'staff.title': '試試看！點一下音符。', 'staff.play': '▶ 聆聽',
-      'staff.caption': '《瑪莉有隻小綿羊》，長笛入門最早學的曲子之一。',
+      'staff.caption': '《瑪莉有隻小綿羊》只用到 Si、La、Sol 三個音，正是學長笛最先學會的三個音。', 'rw.listen': '只要三個音，就是一首歌。想自己吹吹看嗎？', 'rw.bravo': '太棒了！你剛剛吹完了第一首歌。',
       'f1.b': '不限年齡', 'f1.s': '兒童、青少年與成人',
       'f2.b': '30 · 45 · 60 分鐘', 'f2.s': '課程長度',
       'f3.s': '三語教學',
@@ -444,11 +462,14 @@ footer nav { display: flex; gap: 18px; }
   en['f.thanks'] = 'Thank you! Your request has arrived. I\'ll get back to you soon.';
   en['f.sending'] = 'Sending …';
   en['f.error'] = 'Sorry, that didn\'t work. Please write directly to hsuan41213@gmail.com.';
+  en['rw.listen'] = 'Only three notes, and it\'s already a song. Want to play it yourself?';
+  en['rw.bravo'] = 'Bravo! You just played your first song.';
   T.en = en;
   const htmlLang = { en: 'en', de: 'de', zh: 'zh-Hant' };
   let lang = 'en';
   const t = key => T[lang][key] ?? en[key];
 
+  let onLang = () => {};
   function setLang(next) {
     lang = T[next] ? next : 'en';
     document.documentElement.lang = htmlLang[lang];
@@ -456,6 +477,7 @@ footer nav { display: flex; gap: 18px; }
     document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
     document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
     try { localStorage.setItem('sufle-lang', lang); } catch (e) {}
+    onLang();
   }
   document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
   let initial = new URLSearchParams(location.search).get('lang');
@@ -464,52 +486,94 @@ footer nav { display: flex; gap: 18px; }
   if (initial !== 'en') setLang(initial); else document.documentElement.lang = 'en';
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // "Mary Had a Little Lamb": E D C D | E E E (half note)
+  // "Mary Had a Little Lamb" on the first three flute notes: B A G A | B B B (half note)
   const NS = 'http://www.w3.org/2000/svg';
+  const BEAT = 0.6; // seconds, matches audio/mary.mp3 (100 bpm)
   const melody = [
-    { x: 70,  y: 48, f: 659.25, s: 'Ma-',  d: .45 },
-    { x: 135, y: 56, f: 587.33, s: 'ry',   d: .45 },
-    { x: 200, y: 64, f: 523.25, s: 'had',  d: .45 },
-    { x: 265, y: 56, f: 587.33, s: 'a',    d: .45 },
-    { x: 385, y: 48, f: 659.25, s: 'lit-', d: .45 },
-    { x: 450, y: 48, f: 659.25, s: 'tle',  d: .45 },
-    { x: 525, y: 48, f: 659.25, s: 'lamb', d: .9, half: true }
+    { x: 70,  y: 72, k: 'b4', f: 493.88, s: 'Ma-',  d: 1 },
+    { x: 135, y: 80, k: 'a4', f: 440.00, s: 'ry',   d: 1 },
+    { x: 200, y: 88, k: 'g4', f: 392.00, s: 'had',  d: 1 },
+    { x: 265, y: 80, k: 'a4', f: 440.00, s: 'a',    d: 1 },
+    { x: 385, y: 72, k: 'b4', f: 493.88, s: 'lit-', d: 1 },
+    { x: 450, y: 72, k: 'b4', f: 493.88, s: 'tle',  d: 1 },
+    { x: 525, y: 72, k: 'b4', f: 493.88, s: 'lamb', d: 2, half: true }
   ];
-  const colors = ['--orange', '--slate', '--orange', '--slate', '--orange', '--slate', '--orange'];
+  const NAMES = { en: { b4: 'B', a4: 'A', g4: 'G' }, de: { b4: 'H', a4: 'A', g4: 'G' }, zh: { b4: 'Si', a4: 'La', g4: 'Sol' } };
+  const colors = { b4: '--orange', a4: '--slate', g4: '--orange-deep' };
   const g = document.getElementById('notes');
+  const names = [];
   const els = melody.map((n, i) => {
     const note = document.createElementNS(NS, 'g');
     note.setAttribute('class', 'note bob');
     note.setAttribute('tabindex', '0');
     note.setAttribute('role', 'button');
-    note.setAttribute('aria-label', n.s.replace('-', ''));
     note.style.animationDelay = (i * .2) + 's';
     const stem = document.createElementNS(NS, 'line');
-    stem.setAttribute('x1', n.x - 9); stem.setAttribute('x2', n.x - 9);
-    stem.setAttribute('y1', n.y); stem.setAttribute('y2', n.y + 46);
+    stem.setAttribute('x1', n.x + 9); stem.setAttribute('x2', n.x + 9);
+    stem.setAttribute('y1', n.y); stem.setAttribute('y2', n.y - 46);
     const head = document.createElementNS(NS, 'ellipse');
     head.setAttribute('cx', n.x); head.setAttribute('cy', n.y);
     head.setAttribute('rx', 10); head.setAttribute('ry', 7.5);
-    head.style.fill = n.half ? 'var(--bg)' : `var(${colors[i]})`;
-    if (n.half) head.style.stroke = `var(${colors[i]})`, head.style.strokeWidth = 4;
+    head.style.fill = n.half ? 'var(--bg)' : `var(${colors[n.k]})`;
+    if (n.half) head.style.stroke = `var(${colors[n.k]})`, head.style.strokeWidth = 4;
+    const name = document.createElementNS(NS, 'text');
+    name.setAttribute('class', 'nm');
+    name.setAttribute('x', n.x); name.setAttribute('y', 130);
+    names.push(name);
     const lyric = document.createElementNS(NS, 'text');
-    lyric.setAttribute('x', n.x); lyric.setAttribute('y', 150);
+    lyric.setAttribute('x', n.x); lyric.setAttribute('y', 159);
     lyric.textContent = n.s;
-    note.append(stem, head, lyric);
+    const hit = document.createElementNS(NS, 'rect'); // generous tap target over the whole column
+    hit.setAttribute('x', n.x - 30); hit.setAttribute('y', 8); hit.setAttribute('width', 60); hit.setAttribute('height', 156);
+    hit.setAttribute('fill', 'transparent');
+    note.append(hit, stem, head, name, lyric);
     g.append(note);
-    const go = () => play(n, note);
+    const go = () => tap(i);
     note.addEventListener('click', go);
     note.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
     return note;
   });
 
-  let ctx;
+  // Reward box with a booking button, shown after listening or after playing the whole song.
+  const reward = document.getElementById('reward');
+  let rewardKey = null;
+  function showReward(key) { rewardKey = key; document.getElementById('reward-text').textContent = t(key); document.querySelector('.staff-card > p').hidden = true; reward.hidden = false; }
+  onLang = () => {
+    melody.forEach((n, i) => {
+      names[i].textContent = NAMES[lang][n.k];
+      els[i].setAttribute('aria-label', `${NAMES[lang][n.k]} (${n.s.replace('-', '')})`);
+    });
+    if (rewardKey) document.getElementById('reward-text').textContent = t(rewardKey);
+  };
+  onLang();
+
+  // Real flute recordings (B4, A4, G4 and the whole tune), with a synthesized fallback.
+  let ctx, out;
+  const buffers = {};
+  let loading = null;
   function audio() {
-    try { ctx = ctx || new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { return null; }
+    try {
+      if (!ctx) { ctx = new (window.AudioContext || window.webkitAudioContext)(); out = ctx.createGain(); out.gain.value = .9; out.connect(ctx.destination); }
+    } catch (e) { return null; }
     if (ctx.state === 'suspended') ctx.resume();
     return ctx;
   }
-  // Soft flute-like tone: sine with gentle vibrato and breathy attack.
+  function load() {
+    if (loading) return loading;
+    const c = audio(); if (!c) return Promise.resolve();
+    loading = Promise.all(['b4', 'a4', 'g4', 'mary'].map(k =>
+      fetch(`assets/audio/${k}.mp3`).then(r => r.arrayBuffer()).then(b => new Promise((ok, no) => c.decodeAudioData(b, ok, no))).then(buf => { buffers[k] = buf; }).catch(() => {})
+    ));
+    return loading;
+  }
+  const card = document.querySelector('.staff-card');
+  ['pointerenter', 'pointerdown', 'focusin'].forEach(ev => card.addEventListener(ev, () => { load(); }, { once: true }));
+
+  function sample(k, at) {
+    const c = audio(); if (!c || !buffers[k]) return false;
+    const src = c.createBufferSource(); src.buffer = buffers[k]; src.connect(out); src.start(at ?? c.currentTime);
+    return true;
+  }
   function tone(freq, dur, at) {
     const c = audio(); if (!c) return;
     const t0 = at ?? c.currentTime;
@@ -521,20 +585,43 @@ footer nav { display: flex; gap: 18px; }
     amp.gain.linearRampToValueAtTime(.22, t0 + .06);
     amp.gain.setValueAtTime(.2, t0 + dur - .08);
     amp.gain.linearRampToValueAtTime(0, t0 + dur);
-    osc.connect(amp).connect(c.destination);
+    osc.connect(amp).connect(out);
     osc.start(t0); lfo.start(t0); osc.stop(t0 + dur + .02); lfo.stop(t0 + dur + .02);
   }
   function flash(el, ms) { el.classList.add('on'); setTimeout(() => el.classList.remove('on'), ms); }
-  function play(n, el) { tone(n.f, n.d); flash(el, n.d * 1000); }
 
-  document.getElementById('play').addEventListener('click', () => {
-    const c = audio(); let at = c ? c.currentTime + .05 : 0, delay = 0;
+  let progress = 0;
+  async function tap(i) {
+    const n = melody[i];
+    flash(els[i], n.d * BEAT * 1000);
+    await load();
+    if (!sample(n.k)) tone(n.f, n.d * BEAT);
+    progress = i === progress ? progress + 1 : (i === 0 ? 1 : 0);
+    if (progress === melody.length) { progress = 0; setTimeout(() => showReward('rw.bravo'), 900); }
+  }
+
+  let playing = false;
+  document.getElementById('play').addEventListener('click', async () => {
+    if (playing) return;
+    playing = true;
+    await load();
+    const c = audio();
+    const at = c ? c.currentTime + .05 : 0;
+    const whole = sample('mary', at);
+    let beat = 0;
     melody.forEach((n, i) => {
-      if (c) tone(n.f, n.d - .03, at);
-      setTimeout(() => flash(els[i], n.d * 1000), delay * 1000);
-      at += n.d; delay += n.d;
+      if (!whole && c) tone(n.f, n.d * BEAT - .03, at + beat * BEAT);
+      setTimeout(() => flash(els[i], n.d * BEAT * 1000), (beat * BEAT + .05) * 1000);
+      beat += n.d;
     });
+    setTimeout(() => { playing = false; showReward('rw.listen'); }, (beat * BEAT + .6) * 1000);
   });
+
+  // Mobile booking bar: hide it while the contact section is on screen.
+  const bar = document.getElementById('mobile-cta');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => bar.classList.toggle('away', e.isIntersecting), { threshold: .1 }).observe(document.getElementById('contact'));
+  }
 
   const copy = document.getElementById('copy');
   copy.addEventListener('click', () => {
