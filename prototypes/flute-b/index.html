@@ -1,9 +1,9 @@
 <title>Atelier Suflé Playful</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@500;600&display=swap">
 <style>
-/* Type: Cormorant Garamond + Jost, shared with prototype A. Layout: playful sections in soft brand tints (cream, slate blue, flute orange); a tappable music staff ("Twinkle Twinkle Little Star") is the hero's centrepiece. Single light look by choice. */
+/* Type: Cormorant Garamond + Jost (matching the logo), Noto TC for Chinese. Layout: playful sections in soft brand tints (cream, slate blue, flute orange); portrait in an arch with a tappable music staff ("Mary Had a Little Lamb") overlapping it. Single light look by choice. */
 :root {
   --bg: #FFFCF9;
   --ink: #2E3D55;
@@ -16,132 +16,147 @@
   --orange-ink: #A84E14;
   --orange-soft: #FCE5D3;
   --line: #E3DBD1;
-  --display: "Cormorant Garamond", "Garamond", "Georgia", serif;
-  --body: "Jost", "Futura", "Segoe UI", system-ui, sans-serif;
+  --on-dark-accent: #F7A15F;
+  --display: "Cormorant Garamond", "Noto Serif TC", "Garamond", "Georgia", serif;
+  --body: "Jost", "Noto Sans TC", "Futura", "Segoe UI", system-ui, sans-serif;
   color-scheme: light;
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 1.05rem; line-height: 1.6; }
 a { color: inherit; }
-:focus-visible { outline: 3px solid var(--slate); outline-offset: 3px; border-radius: 6px; }
+img { display: block; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
 .wrap { max-width: 1100px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 36px); }
-h1, h2, h3 { font-family: var(--display); line-height: 1.02; margin: 0; text-wrap: balance; }
-h1 { font-size: clamp(2.9rem, 7.5vw, 5.2rem); font-weight: 500; letter-spacing: -.01em; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.04; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(2.9rem, 7vw, 5rem); font-weight: 500; letter-spacing: -.01em; }
 h2 { font-size: clamp(2.2rem, 4.8vw, 3.2rem); font-weight: 500; }
 h3 { font-size: 1.6rem; font-weight: 600; }
+:lang(zh-Hant) h1, :lang(zh-Hant) h2, :lang(zh-Hant) h3 { letter-spacing: .02em; line-height: 1.25; }
+:lang(zh-Hant) .hero h1 span, :lang(zh-Hant) .bubbles span { font-style: normal; }
 p { margin: 0; }
 .tag { display: inline-block; font-weight: 500; font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-ink); }
-.lead { font-size: 1.2rem; color: var(--muted); max-width: 36rem; }
+.lead { font-size: 1.15rem; color: var(--muted); max-width: 36rem; }
 .btn { display: inline-flex; align-items: center; gap: 8px; font: inherit; font-weight: 500; font-size: 1.05rem; letter-spacing: .02em; text-decoration: none; border: 0; border-radius: 16px; padding: 12px 22px; background: var(--slate); color: #FFFFFF; cursor: pointer; box-shadow: 0 4px 0 color-mix(in srgb, var(--slate) 60%, var(--ink)); transition: transform .12s, box-shadow .12s; }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 color-mix(in srgb, var(--slate) 60%, var(--ink)); }
 .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 color-mix(in srgb, var(--slate) 60%, var(--ink)); }
 .btn.alt { background: var(--orange); color: var(--ink); box-shadow: 0 4px 0 color-mix(in srgb, var(--orange) 55%, var(--ink)); }
 
 /* Header */
-header.top { padding-block: 16px; }
+header.top { padding-block: 14px; }
 header.top .wrap { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 .logo { display: flex; align-items: center; text-decoration: none; margin-right: auto; }
-.logo img { height: 48px; width: auto; display: block; }
-nav.main { display: flex; gap: 20px; font-weight: 500; }
+.logo img { height: 48px; width: auto; }
+nav.main { display: flex; gap: 22px; font-weight: 500; }
 nav.main a { text-decoration: none; }
 nav.main a:hover { color: var(--orange-ink); }
 .langs { display: flex; gap: 6px; }
 .langs button { font: inherit; font-weight: 500; font-size: .85rem; border: 2px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 10px; padding: 2px 10px; cursor: pointer; }
 .langs button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--bg); }
-@media (max-width: 820px) { nav.main { display: none; } }
+@media (max-width: 760px) { nav.main { display: none; } }
 
 /* Hero */
 .hero { background: var(--cream); border-radius: 0 0 40px 40px; }
-.hero .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; padding-block: clamp(32px, 6vw, 72px); }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 64px); align-items: center; padding-block: clamp(32px, 5vw, 64px) clamp(56px, 7vw, 88px); }
 .hero h1 span { color: var(--orange-deep); font-style: italic; }
 .hero .lead { margin-block: 18px 26px; }
 .hero .actions { display: flex; gap: 14px; flex-wrap: wrap; }
-.staff-card { background: var(--bg); border-radius: 28px; padding: 22px 20px 18px; box-shadow: 0 18px 40px -24px var(--ink); min-width: 0; }
-.staff-card header { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
-.staff-card header b { font-family: var(--display); font-weight: 600; font-size: 1.4rem; }
+.hero-visual { position: relative; min-width: 0; }
+.portrait { width: 100%; height: auto; max-width: 440px; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 72%; border-radius: 999px 999px 28px 28px; margin-left: auto; background: #FFFFFF; }
+.staff-card { background: var(--bg); border-radius: 26px; padding: 18px 18px 14px; box-shadow: 0 18px 40px -22px var(--ink); position: absolute; left: -12%; bottom: -44px; width: min(430px, 92%); min-width: 0; }
+.staff-card header { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.staff-card header b { font-family: var(--display); font-weight: 600; font-size: 1.35rem; }
 .play { font: inherit; font-weight: 500; font-size: .95rem; border: 0; border-radius: 999px; padding: 6px 14px; background: var(--orange); color: var(--ink); cursor: pointer; }
-svg.staff { width: 100%; height: auto; display: block; }
+svg.staff { width: 100%; height: auto; }
 .staff line.l { stroke: var(--ink); stroke-width: 1.4; opacity: .55; }
 .staff .note { cursor: pointer; }
 .staff .note ellipse { stroke: var(--ink); stroke-width: 2; transition: transform .15s; transform-box: fill-box; transform-origin: center; transform: rotate(-20deg); }
 .staff .note line { stroke: var(--ink); stroke-width: 2.2; }
-.staff .note text { font-family: var(--body); font-weight: 500; font-size: 15px; fill: var(--muted); text-anchor: middle; }
+.staff .note text { font-family: var(--body); font-weight: 500; font-size: 17px; fill: var(--muted); text-anchor: middle; }
 .staff .note:hover ellipse, .staff .note.on ellipse { transform: rotate(-20deg) scale(1.3); }
 .staff .note:focus-visible { outline: none; }
-.staff .note:focus-visible ellipse { stroke: var(--slate); stroke-width: 3.5; }
-.staff-card p { font-size: .9rem; color: var(--muted); margin-top: 4px; }
-@media (max-width: 820px) { .hero .wrap { grid-template-columns: 1fr; } }
+.staff .note:focus-visible ellipse { stroke: var(--orange-deep); stroke-width: 3.5; }
+.staff-card p { font-size: .85rem; color: var(--muted); }
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .portrait { margin-inline: auto; max-width: 380px; }
+  .staff-card { position: relative; left: auto; bottom: auto; width: auto; margin: -56px 8px 0; }
+}
+
+/* Facts strip */
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: clamp(40px, 6vw, 72px); }
+.facts div { background: var(--bg); border: 2px solid var(--line); border-radius: 20px; padding: 16px 18px; display: grid; gap: 2px; align-content: start; min-width: 0; }
+.facts b { font-family: var(--display); font-weight: 600; font-size: 1.45rem; line-height: 1.2; }
+.facts span { color: var(--muted); font-size: .95rem; }
+@media (max-width: 860px) { .facts { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 420px) { .facts { grid-template-columns: 1fr; } }
 
 section.block { padding-block: clamp(56px, 8vw, 96px); }
-.head { display: grid; gap: 10px; margin-bottom: 36px; max-width: 40rem; }
+.head { display: grid; gap: 10px; margin-bottom: 36px; max-width: 42rem; }
 
-/* Age cards */
-.ages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.age { border-radius: 26px; padding: 26px; display: grid; gap: 12px; align-content: start; min-width: 0; }
-.age:nth-child(1) { background: var(--orange-soft); }
-.age:nth-child(2) { background: var(--cream); }
-.age:nth-child(3) { background: var(--slate-soft); }
-.age .badge { justify-self: start; font-weight: 500; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; background: var(--bg); border-radius: 999px; padding: 4px 14px; }
-.age p { color: var(--muted); }
-.age small { font-weight: 600; color: var(--ink); font-size: .95rem; }
-@media (max-width: 880px) { .ages { grid-template-columns: 1fr; max-width: 560px; } }
+/* Lesson lengths */
+.lengths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.len { border-radius: 26px; padding: 26px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.len:nth-child(1) { background: var(--orange-soft); }
+.len:nth-child(2) { background: var(--cream); }
+.len:nth-child(3) { background: var(--slate-soft); }
+.len .mins { font-family: var(--display); font-weight: 600; font-size: 3.2rem; line-height: 1; }
+.len .mins small { font-family: var(--body); font-size: 1rem; font-weight: 500; margin-left: 4px; }
+.len p { color: var(--muted); }
+@media (max-width: 860px) { .lengths { grid-template-columns: 1fr; max-width: 560px; } }
+.places { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; align-items: center; }
+.places h3 { font-size: 1.35rem; margin-right: 8px; }
+.places span { display: inline-flex; align-items: baseline; gap: 8px; border: 2px solid var(--line); border-radius: 999px; padding: 6px 16px; background: var(--bg); }
+.places b { font-weight: 600; }
+.places small { color: var(--muted); font-size: .85rem; }
 
-/* Lesson flow */
-.lesson { background: var(--cream); border-radius: 40px; }
-.flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; list-style: none; margin: 0; padding: 0; counter-reset: f; }
-.flow li { background: var(--bg); border-radius: 22px; padding: 22px; display: grid; gap: 8px; align-content: start; counter-increment: f; min-width: 0; }
-.flow li::before { content: counter(f); display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--slate); color: #FFFFFF; font-family: var(--body); font-weight: 500; font-size: 1.1rem; }
-.flow .min { font-weight: 600; color: var(--slate); font-size: .9rem; }
-.flow p { color: var(--muted); font-size: .98rem; }
-@media (max-width: 900px) { .flow { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 480px) { .flow { grid-template-columns: 1fr; } }
-
-/* Teacher */
-.teacher .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(28px, 6vw, 72px); align-items: center; }
-.photo { aspect-ratio: 1; max-width: 100%; border-radius: 42% 58% 55% 45% / 48% 42% 58% 52%; background: var(--orange-soft); display: grid; place-items: center; }
-.flute-line { display: block; width: min(100%, 420px); height: auto; margin-top: 18px; }
-.ph { font-size: .85rem; color: var(--muted); background: var(--bg); border: 2px dashed var(--line); border-radius: 10px; padding: 6px 12px; text-align: center; }
-.bubbles { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+/* About */
+.about { background: var(--cream); border-radius: 40px; }
+.about .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 6vw, 72px); align-items: center; }
+.collage { position: relative; padding-bottom: 72px; min-width: 0; }
+.collage figure { margin: 0; }
+.collage img { width: 100%; height: auto; border-radius: 24px; }
+.collage figcaption { font-size: .85rem; color: var(--muted); margin-top: 8px; }
+.collage .second { position: absolute; right: -4%; bottom: 0; width: 52%; }
+.collage .second img { border: 6px solid var(--cream); border-radius: 22px; box-shadow: 0 14px 30px -20px var(--ink); }
+.collage .second figcaption { text-align: right; }
+.about .text { display: grid; gap: 14px; min-width: 0; }
+.about .text > p { color: var(--muted); max-width: 60ch; }
+.edu { background: var(--bg); border-radius: 22px; padding: 20px 22px; display: grid; gap: 12px; }
+.edu dl { margin: 0; display: grid; gap: 10px; }
+.edu dt { font-family: var(--display); font-weight: 600; font-size: 1.3rem; line-height: 1.2; }
+.edu dd { margin: 0; color: var(--muted); }
+.edu .school { font-weight: 500; border-top: 2px solid var(--line); padding-top: 10px; }
+.bubbles { display: flex; gap: 10px; flex-wrap: wrap; }
 .bubbles span { font-family: var(--display); font-style: italic; font-weight: 600; font-size: 1.35rem; padding: 4px 16px; border-radius: 18px 18px 18px 4px; }
 .bubbles span:nth-child(1) { background: var(--orange-soft); }
-.bubbles span:nth-child(2) { background: var(--cream); }
-.bubbles span:nth-child(3) { background: var(--slate-soft); }
-.teacher .text { display: grid; gap: 14px; min-width: 0; }
-.teacher .text p { color: var(--muted); max-width: 60ch; }
-@media (max-width: 820px) { .teacher .wrap { grid-template-columns: 1fr; } .photo { max-width: 320px; } }
+.bubbles span:nth-child(2) { background: var(--bg); }
+.bubbles span:nth-child(3) { background: var(--slate-soft); font-style: normal; }
+.flute-line { width: min(100%, 420px); height: auto; }
+@media (max-width: 860px) { .about .wrap { grid-template-columns: 1fr; } .collage { max-width: 560px; } }
 
-/* Parents */
-.parents { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.parents div { display: grid; gap: 6px; border-top: 4px solid var(--orange); padding-top: 16px; min-width: 0; }
-.parents p { color: var(--muted); }
-@media (max-width: 760px) { .parents { grid-template-columns: 1fr; } }
-
-/* Instagram */
-.insta { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
-.insta div { aspect-ratio: 1; border-radius: 18px; display: grid; place-items: center; font-size: 1.6rem; color: var(--ink); }
-.insta div:nth-child(3n+1) { background: var(--orange-soft); }
-.insta div:nth-child(3n+2) { background: var(--cream); }
-.insta div:nth-child(3n) { background: var(--slate-soft); }
-.insta-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
-@media (max-width: 760px) { .insta { grid-template-columns: repeat(3, 1fr); } }
+/* Instagram band */
+.insta { display: flex; justify-content: space-between; align-items: center; gap: 20px 32px; flex-wrap: wrap; border: 2px solid var(--line); border-radius: 30px; padding: clamp(22px, 4vw, 36px); }
+.insta > div { display: grid; gap: 6px; min-width: 0; }
+.insta p { color: var(--muted); }
 
 /* Contact */
 .contact { background: var(--ink); color: var(--bg); border-radius: 40px 40px 0 0; }
 .contact .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 6vw, 72px); align-items: start; }
 .contact .lead { color: color-mix(in srgb, var(--bg) 75%, var(--ink)); margin-top: 14px; }
-.contact .tag { color: #F7A15F; }
-.contact dl { display: grid; gap: 12px; margin: 24px 0 0; }
-.contact dt { font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #F7A15F; }
-.contact dd { margin: 0; }
+.contact .tag { color: var(--on-dark-accent); }
+.contact dl { display: grid; gap: 14px; margin: 26px 0 0; }
+.contact dt { font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--on-dark-accent); }
+.contact dd { margin: 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; overflow-wrap: anywhere; }
+.copy { font: inherit; font-size: .8rem; font-weight: 500; border: 1px solid color-mix(in srgb, var(--bg) 40%, var(--ink)); background: transparent; color: var(--bg); border-radius: 999px; padding: 2px 12px; cursor: pointer; }
 form { background: var(--bg); color: var(--ink); border-radius: 28px; padding: clamp(20px, 4vw, 30px); display: grid; gap: 14px; min-width: 0; }
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 label { display: grid; gap: 6px; font-weight: 500; font-size: .92rem; }
-input, select, textarea { font: inherit; font-weight: 400; color: var(--ink); background: var(--slate-soft); border: 2px solid transparent; border-radius: 14px; padding: 10px 12px; width: 100%; }
+input, select, textarea { font: inherit; font-weight: 400; color: var(--ink); background: var(--cream); border: 2px solid transparent; border-radius: 14px; padding: 10px 12px; width: 100%; }
 input:focus, select:focus, textarea:focus { border-color: var(--slate); outline: none; }
 textarea { min-height: 90px; resize: vertical; }
 .note { font-size: .88rem; color: var(--muted); }
-.ok { background: var(--cream); border-radius: 14px; padding: 12px 14px; font-weight: 600; }
-@media (max-width: 820px) { .contact .wrap { grid-template-columns: 1fr; } }
+.ok { background: var(--orange-soft); border-radius: 14px; padding: 12px 14px; font-weight: 500; }
+@media (max-width: 860px) { .contact .wrap { grid-template-columns: 1fr; } }
 @media (max-width: 460px) { .row { grid-template-columns: 1fr; } }
 footer { background: var(--ink); color: color-mix(in srgb, var(--bg) 60%, var(--ink)); font-size: .9rem; }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 28px; border-top: 1px solid color-mix(in srgb, var(--bg) 15%, var(--ink)); }
@@ -158,15 +173,14 @@ footer nav { display: flex; gap: 18px; }
   <div class="wrap">
     <a class="logo" href="#top"><img src="brand/logo-mark.png" alt="Atelier Suflé" width="773" height="256"></a>
     <nav class="main" aria-label="Main navigation">
-      <a href="#lessons">Lessons</a>
-      <a href="#a-lesson">A lesson</a>
-      <a href="#teacher">Teacher</a>
-      <a href="#contact">Contact</a>
+      <a href="#lessons" data-i18n="nav.lessons">Lessons</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
-    <div class="langs" role="group" aria-label="Language">
-      <button type="button" aria-pressed="true">EN</button>
-      <button type="button" aria-pressed="false">DE</button>
-      <button type="button" aria-pressed="false">中文</button>
+    <div class="langs" role="group" aria-label="Language / Sprache / 語言">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="de" aria-pressed="false">DE</button>
+      <button type="button" data-lang="zh" aria-pressed="false">中文</button>
     </div>
   </div>
 </header>
@@ -175,97 +189,104 @@ footer nav { display: flex; gap: 18px; }
   <section class="hero">
     <div class="wrap">
       <div>
-        <p class="tag">Flute · Early music · Music space · Cologne</p>
-        <h1>Little hands, <span>big sounds.</span></h1>
-        <p class="lead">At Atelier Suflé in Cologne, children discover music: flute lessons from age 5 and early childhood music for the little ones. In English, German or Mandarin.</p>
+        <p class="tag" data-i18n="hero.tag">Flute · Bonn · Köln · Online</p>
+        <h1 data-i18n="hero.title">Find your sound, <span>at any age.</span></h1>
+        <p class="lead" data-i18n="hero.lead">Atelier Suflé is the flute studio of Suhsuan Wang, a flautist trained at the Hochschule für Musik und Tanz Köln. One-to-one lessons for children, teens and adults in Bonn, Köln and online, in English, German or Chinese.</p>
         <div class="actions">
-          <a class="btn" href="#contact">Free trial lesson</a>
-          <a class="btn alt" href="#a-lesson">What a lesson looks like</a>
+          <a class="btn" href="#contact" data-i18n="hero.cta1">Get in touch</a>
+          <a class="btn alt" href="#about" data-i18n="hero.cta2">Meet Suhsuan</a>
         </div>
       </div>
-      <div class="staff-card">
-        <header><b>Try it! Tap the notes.</b><button class="play" type="button" id="play">▶ Listen</button></header>
-        <svg class="staff" viewBox="0 0 600 170" role="group" aria-label="Music staff: Twinkle Twinkle Little Star">
-          <line class="l" x1="20" x2="580" y1="40" y2="40"/>
-          <line class="l" x1="20" x2="580" y1="56" y2="56"/>
-          <line class="l" x1="20" x2="580" y1="72" y2="72"/>
-          <line class="l" x1="20" x2="580" y1="88" y2="88"/>
-          <line class="l" x1="20" x2="580" y1="104" y2="104"/>
-          <line class="l" x1="330" x2="330" y1="40" y2="104"/>
-          <line class="l" x1="580" x2="580" y1="40" y2="104"/>
-          <g id="notes"></g>
-        </svg>
-        <p>“Twinkle Twinkle Little Star”, one of the first songs in lessons.</p>
+      <div class="hero-visual">
+        <img class="portrait" src="photos/portrait.jpg" alt="Suhsuan Wang smiling, holding her flute" width="900" height="1350">
+        <div class="staff-card">
+          <header><b data-i18n="staff.title">Try it! Tap the notes.</b><button class="play" type="button" id="play" data-i18n="staff.play">▶ Listen</button></header>
+          <svg class="staff" viewBox="0 0 600 170" role="group" aria-label="Mary Had a Little Lamb">
+            <line class="l" x1="20" x2="580" y1="40" y2="40"/>
+            <line class="l" x1="20" x2="580" y1="56" y2="56"/>
+            <line class="l" x1="20" x2="580" y1="72" y2="72"/>
+            <line class="l" x1="20" x2="580" y1="88" y2="88"/>
+            <line class="l" x1="20" x2="580" y1="104" y2="104"/>
+            <line class="l" x1="330" x2="330" y1="40" y2="104"/>
+            <line class="l" x1="580" x2="580" y1="40" y2="104"/>
+            <g id="notes"></g>
+          </svg>
+          <p data-i18n="staff.caption">“Mary Had a Little Lamb”, one of the first songs on the flute.</p>
+        </div>
       </div>
     </div>
   </section>
+
+  <div class="wrap">
+    <div class="facts">
+      <div><b data-i18n="f1.b">All ages</b><span data-i18n="f1.s">Children, teens &amp; adults</span></div>
+      <div><b data-i18n="f2.b">30 · 45 · 60 min</b><span data-i18n="f2.s">Lesson lengths</span></div>
+      <div><b>EN · DE · 中文</b><span data-i18n="f3.s">Lessons in three languages</span></div>
+      <div><b data-i18n="f4.b">Bonn · Köln</b><span data-i18n="f4.s">and online</span></div>
+    </div>
+  </div>
 
   <section class="block" id="lessons">
     <div class="wrap">
       <div class="head">
-        <p class="tag">Lessons</p>
-        <h2>Something for every age</h2>
-        <p class="lead">Small children play flutes with a curved headjoint, so even short arms can comfortably reach the keys.</p>
+        <p class="tag" data-i18n="lessons.tag">Flute lessons</p>
+        <h2 data-i18n="lessons.title">One-to-one lessons for every age and level</h2>
+        <p class="lead" data-i18n="lessons.lead">From the very first note to advanced repertoire. Choose the lesson length that suits you.</p>
       </div>
-      <div class="ages">
-        <article class="age"><span class="badge">Ages 3 – 5</span><h3>Little Musicians</h3><p>Early childhood music: singing, dancing, drumming and listening. The gentle way to a first instrument.</p><small>45 min per week</small></article>
-        <article class="age"><span class="badge">From age 5</span><h3>Flute Explorers</h3><p>First notes, reading music, a beautiful tone and first duets. Teens and parents welcome too.</p><small>30 – 60 min per week</small></article>
-        <article class="age"><span class="badge">For families</span><h3>Music Space</h3><p>Small recitals, workshops and music afternoons at the atelier, for the whole family.</p><small>Dates on Instagram</small></article>
+      <div class="lengths">
+        <article class="len"><p class="mins">30<small data-i18n="min">min</small></p><p data-i18n="l30">A focused lesson, ideal for young children and beginners. Small children can start on a flute with a curved headjoint, so short arms reach the keys.</p></article>
+        <article class="len"><p class="mins">45<small data-i18n="min">min</small></p><p data-i18n="l45">More time for tone, technique, reading music and new pieces.</p></article>
+        <article class="len"><p class="mins">60<small data-i18n="min">min</small></p><p data-i18n="l60">In-depth work on repertoire, chamber music and baroque style, for advanced students and adults.</p></article>
+      </div>
+      <div class="places">
+        <h3 data-i18n="places.title">Where lessons happen</h3>
+        <span><b data-i18n="place.bonn">Bonn</b><small data-i18n="place.inperson">in person</small></span>
+        <span><b data-i18n="place.koln">Köln</b><small data-i18n="place.inperson">in person</small></span>
+        <span><b data-i18n="place.online">Online</b><small data-i18n="place.video">video lessons</small></span>
       </div>
     </div>
   </section>
 
-  <section class="block lesson" id="a-lesson">
+  <section class="block about" id="about">
     <div class="wrap">
-      <div class="head">
-        <p class="tag">A 30-minute lesson</p>
-        <h2>What happens in a lesson</h2>
+      <div class="collage">
+        <figure>
+          <img src="photos/concert.jpg" alt="Suhsuan Wang playing flute in a chamber music concert" width="800" height="534" loading="lazy">
+          <figcaption data-i18n="cap.concert">Chamber music concert</figcaption>
+        </figure>
+        <figure class="second">
+          <img src="photos/graduation.jpg" alt="Suhsuan Wang with flowers in front of the Hochschule für Musik und Tanz Köln" width="900" height="678" loading="lazy">
+          <figcaption data-i18n="cap.grad">Graduation at the HfMT Köln</figcaption>
+        </figure>
       </div>
-      <ol class="flow">
-        <li><span class="min">5 min</span><h3>Warm-up</h3><p>Breathing games with soap bubbles and feathers.</p></li>
-        <li><span class="min">10 min</span><h3>Something new</h3><p>A new note or rhythm, one step at a time.</p></li>
-        <li><span class="min">10 min</span><h3>Favourite song</h3><p>We play together, often as a duet with the teacher.</p></li>
-        <li><span class="min">5 min</span><h3>Practice plan &amp; sticker</h3><p>A short plan for home, and a sticker as a reward.</p></li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="block teacher" id="teacher">
-    <div class="wrap">
-      <div class="photo" role="img" aria-label="Placeholder for a photo of the teacher"><span class="ph">Photo: teacher with a child</span></div>
       <div class="text">
-        <p class="tag">Your teacher</p>
-        <h2>Hi, I'm [Name]!</h2>
-        <p>I come from Taiwan, have played the flute since I was a child, and now teach in Cologne. I love teaching music to children. In my lessons, laughing, trying things out and the odd wrong note are all welcome. That's how the joy of playing grows.</p>
-        <div class="bubbles" aria-label="Teaching languages"><span>Hello!</span><span>Hallo!</span><span>你好！</span></div>
+        <p class="tag" data-i18n="about.tag">Your teacher</p>
+        <h2 data-i18n="about.title">Hi, I'm Suhsuan!</h2>
+        <p data-i18n="about.p1">I'm Suhsuan Wang, a flautist from Taiwan. I studied at the Hochschule für Musik und Tanz Köln, where I completed my Bachelor's in flute performance and my Master's in flute performance, chamber music and baroque music.</p>
+        <p data-i18n="about.p2">Today I teach students of all ages in Bonn, Köln and online. In my lessons, laughing, trying things out and the odd wrong note are all welcome. That's how the joy of playing grows.</p>
+        <div class="edu">
+          <p class="tag" data-i18n="edu.label">Education</p>
+          <dl>
+            <div><dt data-i18n="edu.m">Master of Music</dt><dd data-i18n="edu.mf">Flute Performance · Chamber Music · Baroque Music</dd></div>
+            <div><dt data-i18n="edu.b">Bachelor of Music</dt><dd data-i18n="edu.bf">Flute Performance</dd></div>
+          </dl>
+          <p class="school" data-i18n="edu.school">Hochschule für Musik und Tanz Köln, Germany</p>
+        </div>
+        <div class="bubbles" aria-label="English, Deutsch, 中文"><span>Hello!</span><span>Hallo!</span><span>你好！</span></div>
         <img class="flute-line" src="brand/flute-h.png" alt="" width="800" height="41">
       </div>
     </div>
   </section>
 
-  <section class="block" style="padding-top:0">
+  <section class="block">
     <div class="wrap">
-      <div class="head">
-        <p class="tag">For parents</p>
-        <h2>Always in the loop</h2>
-      </div>
-      <div class="parents">
-        <div><h3>A fixed weekly slot</h3><p>A reliable time that fits into family life.</p></div>
-        <div><h3>Quick feedback</h3><p>After each lesson you know what was practised and what comes next.</p></div>
-        <div><h3>Small recitals</h3><p>Once or twice a year, children proudly show what they have learned.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" style="padding-top:0">
-    <div class="wrap">
-      <div class="insta-head">
-        <div class="head" style="margin:0"><p class="tag">Instagram</p><h2>News from the atelier</h2></div>
-        <a class="btn alt" href="https://instagram.com" target="_blank" rel="noopener">Follow @atelier.sufle</a>
-      </div>
-      <div class="insta" aria-label="Placeholder for Instagram photos">
-        <div aria-hidden="true">♪</div><div aria-hidden="true">♫</div><div aria-hidden="true">♩</div>
-        <div aria-hidden="true">♬</div><div aria-hidden="true">♪</div><div aria-hidden="true">♫</div>
+      <div class="insta">
+        <div>
+          <p class="tag">Instagram</p>
+          <h2 data-i18n="insta.title">Follow the atelier</h2>
+          <p data-i18n="insta.p">News, concerts and moments from lessons.</p>
+        </div>
+        <a class="btn alt" href="https://www.instagram.com/ateliersufle.music/" target="_blank" rel="noopener" data-i18n="insta.btn">Follow @ateliersufle.music</a>
       </div>
     </div>
   </section>
@@ -273,28 +294,32 @@ footer nav { display: flex; gap: 18px; }
   <section class="block contact" id="contact">
     <div class="wrap">
       <div>
-        <p class="tag">Contact</p>
-        <h2>Ready for a first flute lesson?</h2>
-        <p class="lead">The 30-minute trial lesson is free. I reply within two working days.</p>
+        <p class="tag" data-i18n="contact.tag">Contact</p>
+        <h2 data-i18n="contact.title">Let's make music together</h2>
+        <p class="lead" data-i18n="contact.lead">Write to me in English, German or Chinese. Tell me a little about the student and which lesson length you're interested in.</p>
         <dl>
-          <div><dt>Email</dt><dd>hello@atelier-sufle.example</dd></div>
-          <div><dt>Instagram</dt><dd>@atelier.sufle (placeholder)</dd></div>
-          <div><dt>Location</dt><dd>Cologne-[district], Germany</dd></div>
+          <div><dt data-i18n="contact.email">Email</dt><dd><span id="email">hsuan41213@gmail.com</span><button class="copy" type="button" id="copy" data-i18n="contact.copy">Copy</button></dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/ateliersufle.music/" target="_blank" rel="noopener">@ateliersufle.music</a></dd></div>
+          <div><dt data-i18n="contact.where">Locations</dt><dd data-i18n="contact.places">Bonn · Köln · Online</dd></div>
         </dl>
       </div>
       <form id="contact-form" novalidate>
         <div class="row">
-          <label for="f-parent">Parent's name<input id="f-parent" name="parent" autocomplete="name"></label>
-          <label for="f-child">Child's first name<input id="f-child" name="child"></label>
+          <label for="f-name"><span data-i18n="f.name">Your name</span><input id="f-name" name="name" autocomplete="name"></label>
+          <label for="f-mail"><span data-i18n="f.email">Email</span><input id="f-mail" name="email" type="email" autocomplete="email"></label>
         </div>
         <div class="row">
-          <label for="f-age">Age<select id="f-age" name="age"><option>3 – 4 years</option><option>5 – 7 years</option><option>8 – 12 years</option><option>13+ / adult</option></select></label>
-          <label for="f-lang">Language<select id="f-lang" name="lang"><option>English</option><option>Deutsch</option><option>中文</option></select></label>
+          <label for="f-for"><span data-i18n="f.for">Lessons for</span><select id="f-for" name="for"><option data-i18n="o.child">My child</option><option data-i18n="o.self">Myself</option></select></label>
+          <label for="f-age"><span data-i18n="f.age">Student's age</span><input id="f-age" name="age" inputmode="numeric"></label>
         </div>
-        <label for="f-mail">Email<input id="f-mail" name="email" type="email" autocomplete="email"></label>
-        <label for="f-msg">Message<textarea id="f-msg" name="message" placeholder="Preferred days, previous experience …"></textarea></label>
-        <button class="btn" type="submit">Request a trial lesson</button>
-        <p class="note" id="form-note">Prototype: this form doesn't send anything yet.</p>
+        <div class="row">
+          <label for="f-len"><span data-i18n="f.len">Lesson length</span><select id="f-len" name="length"><option data-i18n="o.30">30 min</option><option data-i18n="o.45">45 min</option><option data-i18n="o.60">60 min</option></select></label>
+          <label for="f-place"><span data-i18n="f.place">Location</span><select id="f-place" name="place"><option data-i18n="place.bonn">Bonn</option><option data-i18n="place.koln">Köln</option><option data-i18n="place.online">Online</option></select></label>
+        </div>
+        <label for="f-lang"><span data-i18n="f.lang">Language</span><select id="f-lang" name="lang"><option>English</option><option>Deutsch</option><option>中文</option></select></label>
+        <label for="f-msg"><span data-i18n="f.msg">Message</span><textarea id="f-msg" name="message" data-i18n-ph="f.ph" placeholder="Experience so far, preferred days …"></textarea></label>
+        <button class="btn" type="submit" data-i18n="f.send">Send request</button>
+        <p class="note" id="form-note" data-i18n="f.note">Prototype: this form isn't connected yet. Please write by email for now.</p>
       </form>
     </div>
   </section>
@@ -302,23 +327,124 @@ footer nav { display: flex; gap: 18px; }
 
 <footer>
   <div class="wrap">
-    <span>© Atelier Suflé · Cologne</span>
-    <nav aria-label="Legal"><a href="#top">Legal notice (Impressum)</a><a href="#top">Privacy</a></nav>
+    <span>© Atelier Suflé · Suhsuan Wang</span>
+    <nav aria-label="Legal"><a href="#top" data-i18n="footer.legal">Legal notice (Impressum)</a><a href="#top" data-i18n="footer.privacy">Privacy</a></nav>
   </div>
 </footer>
 
 <script>
 (() => {
-  // "Twinkle Twinkle Little Star": C C G G | A A G (half note); A5 sits on a ledger line
+  // English is written in the page; German and Traditional Chinese are swapped in.
+  const T = {
+    de: {
+      'nav.lessons': 'Unterricht', 'nav.about': 'Über mich', 'nav.contact': 'Kontakt',
+      'hero.tag': 'Flöte · Bonn · Köln · Online',
+      'hero.title': 'Flöte spielen, <span>in jedem Alter.</span>',
+      'hero.lead': 'Atelier Suflé ist das Flötenstudio von Suhsuan Wang, Flötistin mit Abschluss an der Hochschule für Musik und Tanz Köln. Einzelunterricht für Kinder, Jugendliche und Erwachsene in Bonn, Köln und online, auf Englisch, Deutsch oder Chinesisch.',
+      'hero.cta1': 'Kontakt aufnehmen', 'hero.cta2': 'Suhsuan kennenlernen',
+      'staff.title': 'Probier mal! Tippe auf die Noten.', 'staff.play': '▶ Anhören',
+      'staff.caption': '„Mary Had a Little Lamb“, eines der ersten Lieder auf der Flöte.',
+      'f1.b': 'Jedes Alter', 'f1.s': 'Kinder, Jugendliche &amp; Erwachsene',
+      'f2.b': '30 · 45 · 60 Min.', 'f2.s': 'Unterrichtsdauer',
+      'f3.s': 'Unterricht in drei Sprachen',
+      'f4.b': 'Bonn · Köln', 'f4.s': 'und online',
+      'lessons.tag': 'Flötenunterricht', 'lessons.title': 'Einzelunterricht für jedes Alter und Niveau',
+      'lessons.lead': 'Vom allerersten Ton bis zum anspruchsvollen Repertoire. Wählen Sie die Unterrichtsdauer, die zu Ihnen passt.',
+      'min': 'Min.',
+      'l30': 'Konzentrierter Unterricht, ideal für kleine Kinder und Anfänger. Kleine Kinder können mit einem gebogenen Kopfstück beginnen, so reichen auch kurze Arme bis zu den Klappen.',
+      'l45': 'Mehr Zeit für Klang, Technik, Notenlesen und neue Stücke.',
+      'l60': 'Intensive Arbeit an Repertoire, Kammermusik und barocker Spielweise, für Fortgeschrittene und Erwachsene.',
+      'places.title': 'Hier findet der Unterricht statt',
+      'place.bonn': 'Bonn', 'place.koln': 'Köln', 'place.online': 'Online', 'place.inperson': 'vor Ort', 'place.video': 'Videounterricht',
+      'cap.concert': 'Kammermusikkonzert', 'cap.grad': 'Abschluss an der HfMT Köln',
+      'about.tag': 'Ihre Lehrerin', 'about.title': 'Hallo, ich bin Suhsuan!',
+      'about.p1': 'Ich bin Suhsuan Wang, Flötistin aus Taiwan. An der Hochschule für Musik und Tanz Köln habe ich meinen Bachelor in Flöte sowie meinen Master in Flöte, Kammermusik und Barockmusik abgeschlossen.',
+      'about.p2': 'Heute unterrichte ich Schülerinnen und Schüler jeden Alters in Bonn, Köln und online. Bei mir darf gelacht, ausprobiert und auch mal falsch gespielt werden. So wächst die Freude am Instrument.',
+      'edu.label': 'Ausbildung', 'edu.m': 'Master of Music', 'edu.mf': 'Flöte · Kammermusik · Barockmusik',
+      'edu.b': 'Bachelor of Music', 'edu.bf': 'Flöte', 'edu.school': 'Hochschule für Musik und Tanz Köln',
+      'insta.title': 'Folgen Sie dem Atelier', 'insta.p': 'Neuigkeiten, Konzerte und Momente aus dem Unterricht.', 'insta.btn': '@ateliersufle.music folgen',
+      'contact.tag': 'Kontakt', 'contact.title': 'Lassen Sie uns gemeinsam musizieren',
+      'contact.lead': 'Schreiben Sie mir auf Deutsch, Englisch oder Chinesisch. Erzählen Sie mir kurz etwas über die Schülerin oder den Schüler und welche Unterrichtsdauer Sie interessiert.',
+      'contact.email': 'E-Mail', 'contact.copy': 'Kopieren', 'contact.copied': 'Kopiert', 'contact.where': 'Orte', 'contact.places': 'Bonn · Köln · Online',
+      'f.name': 'Ihr Name', 'f.email': 'E-Mail', 'f.for': 'Unterricht für', 'o.child': 'Mein Kind', 'o.self': 'Mich selbst',
+      'f.age': 'Alter', 'f.len': 'Unterrichtsdauer', 'o.30': '30 Min.', 'o.45': '45 Min.', 'o.60': '60 Min.',
+      'f.place': 'Ort', 'f.lang': 'Sprache', 'f.msg': 'Nachricht', 'f.ph': 'Vorerfahrung, Wunschtage …', 'f.send': 'Anfrage senden',
+      'f.note': 'Prototyp: Das Formular ist noch nicht verbunden. Bitte schreiben Sie vorerst per E-Mail.',
+      'f.thanks': 'Danke! Auf der fertigen Website würde Ihre Anfrage jetzt verschickt. Bitte schreiben Sie vorerst an hsuan41213@gmail.com.',
+      'footer.legal': 'Impressum', 'footer.privacy': 'Datenschutz'
+    },
+    zh: {
+      'nav.lessons': '課程', 'nav.about': '關於我', 'nav.contact': '聯絡',
+      'hero.tag': '長笛 · 波昂 · 科隆 · 線上',
+      'hero.title': '吹出屬於你的聲音，<span>不分年齡。</span>',
+      'hero.lead': 'Atelier Suflé 是長笛演奏家 Suhsuan Wang 的長笛工作室。她畢業於科隆音樂舞蹈學院，在波昂、科隆及線上為兒童、青少年和成人提供一對一長笛課程，可使用英文、德文或中文授課。',
+      'hero.cta1': '聯絡我', 'hero.cta2': '認識 Suhsuan',
+      'staff.title': '試試看！點一下音符。', 'staff.play': '▶ 聆聽',
+      'staff.caption': '《瑪莉有隻小綿羊》，長笛入門最早學的曲子之一。',
+      'f1.b': '不限年齡', 'f1.s': '兒童、青少年與成人',
+      'f2.b': '30 · 45 · 60 分鐘', 'f2.s': '課程長度',
+      'f3.s': '三語教學',
+      'f4.b': '波昂 · 科隆', 'f4.s': '以及線上課程',
+      'lessons.tag': '長笛課程', 'lessons.title': '一對一教學，適合各年齡與程度',
+      'lessons.lead': '從第一個音到進階曲目，選擇最適合你的課程長度。',
+      'min': '分鐘',
+      'l30': '專注而精簡，最適合幼兒與初學者。年紀小的孩子可以使用彎頭長笛，手臂短也能輕鬆按到按鍵。',
+      'l45': '有更多時間練習音色、技巧、識譜與新曲目。',
+      'l60': '深入學習曲目、室內樂與巴洛克風格，適合進階學生與成人。',
+      'places.title': '上課地點',
+      'place.bonn': '波昂', 'place.koln': '科隆', 'place.online': '線上', 'place.inperson': '面授', 'place.video': '視訊課程',
+      'cap.concert': '室內樂音樂會', 'cap.grad': '於科隆音樂舞蹈學院畢業',
+      'about.tag': '你的老師', 'about.title': '你好，我是 Suhsuan！',
+      'about.p1': '我是 Suhsuan Wang，來自台灣的長笛演奏家。我在科隆音樂舞蹈學院完成長笛演奏學士學位，以及長笛演奏、室內樂與巴洛克音樂碩士學位。',
+      'about.p2': '現在我在波昂、科隆及線上教授各年齡層的學生。在我的課堂上，可以盡情歡笑、勇於嘗試，偶爾吹錯也沒關係，這樣才能培養對音樂的熱愛。',
+      'edu.label': '學歷', 'edu.m': '音樂碩士', 'edu.mf': '長笛演奏 · 室內樂 · 巴洛克音樂',
+      'edu.b': '音樂學士', 'edu.bf': '長笛演奏', 'edu.school': '德國科隆音樂舞蹈學院',
+      'insta.title': '追蹤工作室', 'insta.p': '最新消息、音樂會與課堂點滴。', 'insta.btn': '追蹤 @ateliersufle.music',
+      'contact.tag': '聯絡', 'contact.title': '一起來玩音樂吧',
+      'contact.lead': '歡迎用中文、英文或德文與我聯絡，簡單介紹一下學生的情況，以及想上的課程長度。',
+      'contact.email': '電子郵件', 'contact.copy': '複製', 'contact.copied': '已複製', 'contact.where': '地點', 'contact.places': '波昂 · 科隆 · 線上',
+      'f.name': '您的姓名', 'f.email': '電子郵件', 'f.for': '上課對象', 'o.child': '我的孩子', 'o.self': '我自己',
+      'f.age': '學生年齡', 'f.len': '課程長度', 'o.30': '30 分鐘', 'o.45': '45 分鐘', 'o.60': '60 分鐘',
+      'f.place': '地點', 'f.lang': '語言', 'f.msg': '留言', 'f.ph': '學習經驗、方便的時間……', 'f.send': '送出',
+      'f.note': '原型：表單尚未連線，目前請透過電子郵件聯絡。',
+      'f.thanks': '謝謝！正式網站會在此送出您的詢問。目前請寫信至 hsuan41213@gmail.com。',
+      'footer.legal': '法律聲明 (Impressum)', 'footer.privacy': '隱私權政策'
+    }
+  };
+  // Capture the English text already in the page so every language swaps both ways.
+  const en = {};
+  document.querySelectorAll('[data-i18n]').forEach(el => { en[el.dataset.i18n] ??= el.innerHTML; });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { en[el.dataset.i18nPh] = el.placeholder; });
+  en['contact.copied'] = 'Copied';
+  en['f.thanks'] = 'Thank you! On the live website your request would now be sent. For now, please write to hsuan41213@gmail.com.';
+  T.en = en;
+  const htmlLang = { en: 'en', de: 'de', zh: 'zh-Hant' };
+  let lang = 'en';
+  const t = key => T[lang][key] ?? en[key];
+
+  function setLang(next) {
+    lang = T[next] ? next : 'en';
+    document.documentElement.lang = htmlLang[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = t(el.dataset.i18n); });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+    document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    try { localStorage.setItem('sufle-lang', lang); } catch (e) {}
+  }
+  document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  let saved = null;
+  try { saved = localStorage.getItem('sufle-lang'); } catch (e) {}
+  if (saved && saved !== 'en') setLang(saved); else document.documentElement.lang = 'en';
+
+  // "Mary Had a Little Lamb": E D C D | E E E (half note)
   const NS = 'http://www.w3.org/2000/svg';
   const melody = [
-    { x: 70,  y: 64, f: 523.25, s: 'Twin-', d: .45 },
-    { x: 135, y: 64, f: 523.25, s: 'kle',   d: .45 },
-    { x: 200, y: 32, f: 783.99, s: 'twin-', d: .45 },
-    { x: 265, y: 32, f: 783.99, s: 'kle',   d: .45 },
-    { x: 385, y: 24, f: 880.00, s: 'lit-',  d: .45, ledger: true },
-    { x: 450, y: 24, f: 880.00, s: 'tle',   d: .45, ledger: true },
-    { x: 525, y: 32, f: 783.99, s: 'star',  d: .9, half: true }
+    { x: 70,  y: 48, f: 659.25, s: 'Ma-',  d: .45 },
+    { x: 135, y: 56, f: 587.33, s: 'ry',   d: .45 },
+    { x: 200, y: 64, f: 523.25, s: 'had',  d: .45 },
+    { x: 265, y: 56, f: 587.33, s: 'a',    d: .45 },
+    { x: 385, y: 48, f: 659.25, s: 'lit-', d: .45 },
+    { x: 450, y: 48, f: 659.25, s: 'tle',  d: .45 },
+    { x: 525, y: 48, f: 659.25, s: 'lamb', d: .9, half: true }
   ];
   const colors = ['--orange', '--slate', '--orange', '--slate', '--orange', '--slate', '--orange'];
   const g = document.getElementById('notes');
@@ -327,7 +453,7 @@ footer nav { display: flex; gap: 18px; }
     note.setAttribute('class', 'note bob');
     note.setAttribute('tabindex', '0');
     note.setAttribute('role', 'button');
-    note.setAttribute('aria-label', 'Note ' + n.s.replace('-', ''));
+    note.setAttribute('aria-label', n.s.replace('-', ''));
     note.style.animationDelay = (i * .2) + 's';
     const stem = document.createElementNS(NS, 'line');
     stem.setAttribute('x1', n.x - 9); stem.setAttribute('x2', n.x - 9);
@@ -341,12 +467,6 @@ footer nav { display: flex; gap: 18px; }
     lyric.setAttribute('x', n.x); lyric.setAttribute('y', 150);
     lyric.textContent = n.s;
     note.append(stem, head, lyric);
-    if (n.ledger) {
-      const ledger = document.createElementNS(NS, 'line');
-      ledger.setAttribute('x1', n.x - 17); ledger.setAttribute('x2', n.x + 17);
-      ledger.setAttribute('y1', n.y); ledger.setAttribute('y2', n.y);
-      note.prepend(ledger);
-    }
     g.append(note);
     const go = () => play(n, note);
     note.addEventListener('click', go);
@@ -363,38 +483,44 @@ footer nav { display: flex; gap: 18px; }
   // Soft flute-like tone: sine with gentle vibrato and breathy attack.
   function tone(freq, dur, at) {
     const c = audio(); if (!c) return;
-    const t = at ?? c.currentTime;
+    const t0 = at ?? c.currentTime;
     const osc = c.createOscillator(), amp = c.createGain(), lfo = c.createOscillator(), depth = c.createGain();
     osc.type = 'sine'; osc.frequency.value = freq;
     lfo.frequency.value = 5; depth.gain.value = freq * .006;
     lfo.connect(depth).connect(osc.frequency);
-    amp.gain.setValueAtTime(0, t);
-    amp.gain.linearRampToValueAtTime(.22, t + .06);
-    amp.gain.setValueAtTime(.2, t + dur - .08);
-    amp.gain.linearRampToValueAtTime(0, t + dur);
+    amp.gain.setValueAtTime(0, t0);
+    amp.gain.linearRampToValueAtTime(.22, t0 + .06);
+    amp.gain.setValueAtTime(.2, t0 + dur - .08);
+    amp.gain.linearRampToValueAtTime(0, t0 + dur);
     osc.connect(amp).connect(c.destination);
-    osc.start(t); lfo.start(t); osc.stop(t + dur + .02); lfo.stop(t + dur + .02);
+    osc.start(t0); lfo.start(t0); osc.stop(t0 + dur + .02); lfo.stop(t0 + dur + .02);
   }
   function flash(el, ms) { el.classList.add('on'); setTimeout(() => el.classList.remove('on'), ms); }
   function play(n, el) { tone(n.f, n.d); flash(el, n.d * 1000); }
 
   document.getElementById('play').addEventListener('click', () => {
-    const c = audio(); let t = c ? c.currentTime + .05 : 0, delay = 0;
+    const c = audio(); let at = c ? c.currentTime + .05 : 0, delay = 0;
     melody.forEach((n, i) => {
-      if (c) tone(n.f, n.d - .03, t);
+      if (c) tone(n.f, n.d - .03, at);
       setTimeout(() => flash(els[i], n.d * 1000), delay * 1000);
-      t += n.d; delay += n.d;
+      at += n.d; delay += n.d;
     });
   });
 
-  document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => {
-    document.querySelectorAll('.langs button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-  }));
+  const copy = document.getElementById('copy');
+  copy.addEventListener('click', () => {
+    const email = document.getElementById('email');
+    const done = () => { copy.textContent = t('contact.copied'); setTimeout(() => { copy.textContent = t('contact.copy'); }, 1600); };
+    const select = () => { const r = document.createRange(); r.selectNodeContents(email); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText(email.textContent).then(done, select); } catch (e) { select(); }
+  });
+
   document.getElementById('contact-form').addEventListener('submit', e => {
     e.preventDefault();
     const note = document.getElementById('form-note');
     note.className = 'ok';
-    note.textContent = 'Thank you! On the finished website, your request would be sent now (prototype).';
+    note.removeAttribute('data-i18n');
+    note.textContent = t('f.thanks');
   });
 })();
 </script>
