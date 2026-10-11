@@ -34,7 +34,8 @@ OPTIONAL = {
 }
 
 # Photos for the Music section: (file stem in assets/photos, width, height, alt key, caption key).
-MUSIC_PHOTOS = [('concert-800', 800, 534, 'alt.concert', 'cap.concert')]
+MUSIC_PHOTOS = [('concert-800', 800, 534, 'alt.concert', 'cap.concert'),
+                ('graduation-600', 600, 452, 'alt.grad', 'cap.grad')]
 
 # Mainland vocabulary applied after the Traditional -> Simplified conversion.
 SIMPLIFIED_WORDS = [('波昂', '波恩'), ('线上', '在线'), ('联络', '联系'), ('隐私权政策', '隐私政策'),
@@ -54,7 +55,8 @@ T = {
         'hero.title': 'Find your sound <em>on the flute.</em>',
         'hero.lead': 'One-to-one lessons for children, teens and adults, from the very first note to advanced repertoire, with Suhsuan Wang, flautist trained at the Hochschule für Musik und Tanz Köln.',
         'hero.cta2': 'Meet Suhsuan',
-        'hero.alt': 'Suhsuan Wang smiling, holding her flute',
+        'hero.alt': 'Suhsuan Wang in a blue dress, holding her flute',
+        'alt.about': 'Suhsuan Wang laughing, holding her flute',
         'facts.label': 'At a glance',
         'f1.b': 'Master of Music', 'f1.s': 'HfMT Köln',
         'f2.b': 'All ages', 'f2.s': 'Beginner to advanced',
@@ -142,7 +144,8 @@ T = {
         'hero.title': 'Finden Sie Ihren Klang <em>auf der Flöte.</em>',
         'hero.lead': 'Einzelunterricht für Kinder, Jugendliche und Erwachsene, vom allerersten Ton bis zum anspruchsvollen Repertoire, bei Suhsuan Wang, Flötistin mit Abschluss an der Hochschule für Musik und Tanz Köln.',
         'hero.cta2': 'Suhsuan kennenlernen',
-        'hero.alt': 'Suhsuan Wang lächelt und hält ihre Flöte',
+        'hero.alt': 'Suhsuan Wang im blauen Kleid mit ihrer Flöte',
+        'alt.about': 'Suhsuan Wang lacht und hält ihre Flöte',
         'facts.label': 'Auf einen Blick',
         'f1.b': 'Master of Music', 'f1.s': 'HfMT Köln',
         'f2.b': 'Jedes Alter', 'f2.s': 'Anfänger bis Fortgeschrittene',
@@ -230,7 +233,8 @@ T = {
         'hero.title': '在長笛上，<br><em>找到你的聲音。</em>',
         'hero.lead': '為兒童、青少年與成人提供一對一長笛課程，從第一個音到進階曲目。由畢業於科隆音樂舞蹈學院的長笛演奏家 Suhsuan Wang 親自授課。',
         'hero.cta2': '認識 Suhsuan',
-        'hero.alt': 'Suhsuan Wang 手持長笛微笑',
+        'hero.alt': '身穿藍色洋裝、手持長笛的 Suhsuan Wang',
+        'alt.about': 'Suhsuan Wang 手持長笛開懷大笑',
         'facts.label': '重點資訊',
         'f1.b': '音樂碩士', 'f1.s': '科隆音樂舞蹈學院',
         'f2.b': '不限年齡', 'f2.s': '初學到進階',
