@@ -22,7 +22,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="{{root}}assets/fonts/cormorant-garamond-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{{root}}assets/fonts/jost-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="{{root}}assets/photos/portrait-800.webp" as="image" type="image/webp" imagesrcset="{{root}}assets/photos/portrait-480.webp 480w, {{root}}assets/photos/portrait-800.webp 800w" imagesizes="(max-width: 900px) 80vw, 420px">
+<link rel="preload" href="{{root}}assets/photos/portrait-800.webp" as="image" type="image/webp" imagesrcset="{{root}}assets/photos/portrait-480.webp 480w, {{root}}assets/photos/portrait-800.webp 800w" imagesizes="(max-width: 900px) 80vw, 460px">
 <link rel="stylesheet" href="{{root}}assets/fonts/fonts.css">
 <link rel="stylesheet" href="{{root}}assets/css/site.css">
 <script type="application/ld+json">{{jsonld}}</script>
@@ -30,36 +30,43 @@
 <body data-root="{{root}}">
 <a class="skip" href="#main">{{skip}}</a>
 
-<header class="top">
+<header class="top" id="top">
   <div class="wrap top-row">
     <a class="logo" href="{{home}}"><img src="{{root}}assets/brand/logo-mark.png" alt="Atelier Suflé" width="773" height="256"></a>
     <nav class="main-nav" aria-label="{{nav.label}}">
-      <a href="#about">{{nav.about}}</a>
-      <a href="#lessons">{{nav.lessons}}</a>
-      <a href="#music">{{nav.music}}</a>
-      <a href="#contact">{{nav.contact}}</a>
+      <a href="#about" data-section="about">{{nav.about}}</a>
+      <a href="#lessons" data-section="lessons">{{nav.lessons}}</a>
+      <a href="#music" data-section="music">{{nav.music}}</a>
+      <a href="#faq" data-section="faq">{{nav.faq}}</a>
+      <a href="#contact" data-section="contact">{{nav.contact}}</a>
     </nav>
     <nav class="langs" aria-label="{{lang.label}}">{{langswitch}}</nav>
     <a class="btn btn-sm head-cta" href="#contact">{{cta.short}}</a>
   </div>
+  <span class="progress" aria-hidden="true"></span>
 </header>
 
 <main id="main">
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div class="hero-text">
-        <p class="label">{{hero.eyebrow}}</p>
-        <h1 id="hero-title">{{hero.title}}</h1>
+        <h1 id="hero-title"><span class="kicker">{{hero.kicker}}</span> <span class="display">{{hero.title}}</span></h1>
         <p class="lead">{{hero.lead}}</p>
         <div class="actions">
           <a class="btn" href="#contact">{{cta.book}}</a>
           <a class="btn btn-ghost" href="#about">{{hero.cta2}}</a>
         </div>
+        <ul class="facts">
+          <li><b>{{f1.b}}</b><span>{{f1.s}}</span></li>
+          <li><b>{{f2.b}}</b><span>{{f2.s}}</span></li>
+          <li><b>{{f3.b}}</b><span>{{f3.s}}</span></li>
+          <li><b>{{f4.b}}</b><span>{{f4.s}}</span></li>
+        </ul>
       </div>
       <div class="hero-visual">
         <picture>
-          <source type="image/webp" srcset="{{root}}assets/photos/portrait-480.webp 480w, {{root}}assets/photos/portrait-800.webp 800w" sizes="(max-width: 900px) 80vw, 420px">
-          <img class="portrait" src="{{root}}assets/photos/portrait-800.jpg" srcset="{{root}}assets/photos/portrait-480.jpg 480w, {{root}}assets/photos/portrait-800.jpg 800w" sizes="(max-width: 900px) 80vw, 420px" alt="{{hero.alt}}" width="800" height="1200" fetchpriority="high">
+          <source type="image/webp" srcset="{{root}}assets/photos/portrait-480.webp 480w, {{root}}assets/photos/portrait-800.webp 800w" sizes="(max-width: 900px) 80vw, 460px">
+          <img class="portrait" src="{{root}}assets/photos/portrait-800.jpg" srcset="{{root}}assets/photos/portrait-480.jpg 480w, {{root}}assets/photos/portrait-800.jpg 800w" sizes="(max-width: 900px) 80vw, 460px" alt="{{hero.alt}}" width="800" height="1200" fetchpriority="high">
         </picture>
         <div class="staff-card" id="staff-card">
           <div class="staff-head">
@@ -83,43 +90,26 @@
     </div>
   </section>
 
-  <section class="facts-band" aria-label="{{facts.label}}">
-    <div class="wrap">
-      <dl class="facts">
-        <div><dt>{{f1.b}}</dt><dd>{{f1.s}}</dd></div>
-        <div><dt>{{f2.b}}</dt><dd>{{f2.s}}</dd></div>
-        <div><dt>{{f3.b}}</dt><dd>{{f3.s}}</dd></div>
-        <div><dt>{{f4.b}}</dt><dd>{{f4.s}}</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <section class="block" id="about" aria-labelledby="about-title">
-    <div class="wrap split">
-      <div class="split-main">
-        <p class="label">{{about.label}}</p>
-        <h2 id="about-title">{{about.title}}</h2>
-        <div class="prose">
-          <p>{{about.p1}}</p>
-          <p>{{about.p2}}</p>
-        </div>
-        {{philosophy}}
-        <div class="edu">
-          <h3 class="label">{{edu.label}}</h3>
-          <dl>
-            <div><dt>{{edu.m}}</dt><dd>{{edu.mf}}</dd></div>
-            <div><dt>{{edu.b}}</dt><dd>{{edu.bf}}</dd></div>
-          </dl>
-          <p class="school">{{edu.school}}</p>
-        </div>
-      </div>
-      <figure class="split-side photo-frame">
+  <section class="block about" id="about" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <figure class="about-photo">
         <picture>
-          <source type="image/webp" srcset="{{root}}assets/photos/graduation-600.webp 600w, {{root}}assets/photos/graduation-1000.webp 1000w" sizes="(max-width: 900px) 90vw, 440px">
-          <img src="{{root}}assets/photos/graduation-600.jpg" srcset="{{root}}assets/photos/graduation-600.jpg 600w, {{root}}assets/photos/graduation-1000.jpg 1000w" sizes="(max-width: 900px) 90vw, 440px" alt="{{alt.grad}}" width="1000" height="754" loading="lazy" decoding="async">
+          <source type="image/webp" srcset="{{root}}assets/photos/graduation-600.webp 600w, {{root}}assets/photos/graduation-1000.webp 1000w" sizes="(max-width: 900px) 92vw, 520px">
+          <img src="{{root}}assets/photos/graduation-600.jpg" srcset="{{root}}assets/photos/graduation-600.jpg 600w, {{root}}assets/photos/graduation-1000.jpg 1000w" sizes="(max-width: 900px) 92vw, 520px" alt="{{alt.grad}}" width="1000" height="754" loading="lazy" decoding="async">
         </picture>
         <figcaption>{{cap.grad}}</figcaption>
       </figure>
+      <div class="about-text">
+        <p class="label">{{about.label}}</p>
+        <h2 id="about-title">{{about.title}}</h2>
+        <p class="prose">{{about.p1}}</p>
+        {{philosophy}}
+        <div class="diplomas" role="group" aria-label="{{edu.label}}">
+          <div class="diploma"><p class="diploma-kind">{{edu.m}}</p><p>{{edu.mf}}</p></div>
+          <div class="diploma"><p class="diploma-kind">{{edu.b}}</p><p>{{edu.bf}}</p></div>
+        </div>
+        <p class="school">{{edu.school}}</p>
+      </div>
     </div>
   </section>
 
@@ -128,10 +118,9 @@
       <div class="section-head">
         <p class="label">{{lessons.label}}</p>
         <h2 id="lessons-title">{{lessons.title}}</h2>
-        <p class="lead">{{lessons.lead}}</p>
       </div>
       <div class="lessons-grid">
-        <div>
+        <div class="col">
           <h3 class="sub">{{who.title}}</h3>
           <dl class="rows">
             <div><dt>{{who.kids.t}}</dt><dd>{{who.kids.p}}</dd></div>
@@ -139,18 +128,16 @@
             <div><dt>{{who.adults.t}}</dt><dd>{{who.adults.p}}</dd></div>
           </dl>
         </div>
-        <div>
+        <div class="col">
           <h3 class="sub">{{len.title}}</h3>
-          <dl class="rows lengths">
-            <div><dt><span class="num">30</span> {{len.unit}}</dt><dd>{{len.30}}</dd></div>
-            <div><dt><span class="num">45</span> {{len.unit}}</dt><dd>{{len.45}}</dd></div>
-            <div><dt><span class="num">60</span> {{len.unit}}</dt><dd>{{len.60}}</dd></div>
-          </dl>
+          <ul class="lengths">
+            <li><span class="num">30</span> {{len.unit}}</li>
+            <li><span class="num">45</span> {{len.unit}}</li>
+            <li><span class="num">60</span> {{len.unit}}</li>
+          </ul>
           <p class="note">{{len.note}}</p>
         </div>
-      </div>
-      <div class="lessons-grid second">
-        <div>
+        <div class="col">
           <h3 class="sub">{{where.title}}</h3>
           <dl class="rows places">
             <div><dt>{{where.bonn}}</dt><dd>{{where.inperson}}</dd></div>
@@ -158,28 +145,20 @@
             <div><dt>{{where.online}}</dt><dd>{{where.video}}</dd></div>
           </dl>
         </div>
-        <div>
-          <h3 class="sub">{{steps.title}}</h3>
-          <ol class="steps">
-            <li><h4>{{step1.t}}</h4><p>{{step1.p}}</p></li>
-            <li><h4>{{step2.t}}</h4><p>{{step2.p}}</p></li>
-            <li><h4>{{step3.t}}</h4><p>{{step3.p}}</p></li>
-          </ol>
-          <a class="btn" href="#contact">{{cta.book}}</a>
-        </div>
       </div>
+      <h3 class="sub steps-title">{{steps.title}}</h3>
+      <ol class="flute-steps">
+        <li><h4>{{step1.t}}</h4><p>{{step1.p}}</p></li>
+        <li><h4>{{step2.t}}</h4><p>{{step2.p}}</p></li>
+        <li><h4>{{step3.t}}</h4><p>{{step3.p}}</p></li>
+        <li class="headjoint"><a class="btn" href="#contact">{{cta.book}}</a></li>
+      </ol>
     </div>
   </section>
 
   <section class="block music" id="music" aria-labelledby="music-title">
     <div class="wrap music-grid">
-      <figure class="music-photo">
-        <picture>
-          <source type="image/webp" srcset="{{root}}assets/photos/concert-800.webp">
-          <img src="{{root}}assets/photos/concert-800.jpg" alt="{{alt.concert}}" width="800" height="534" loading="lazy" decoding="async">
-        </picture>
-        <figcaption>{{cap.concert}}</figcaption>
-      </figure>
+      <div class="music-photos">{{music_photos}}</div>
       <div class="music-text">
         <p class="label">{{music.label}}</p>
         <h2 id="music-title">{{music.title}}</h2>
@@ -187,12 +166,22 @@
         <p>{{music.p2}}</p>
         {{recordings}}
         <a class="btn btn-light" href="{{instagram}}" target="_blank" rel="noopener">{{music.cta}} <span class="sr-only">({{instagram_handle}})</span></a>
-        <img class="flute-line" src="{{root}}assets/brand/flute-h.png" alt="" width="800" height="41" loading="lazy">
       </div>
     </div>
   </section>
 
   {{testimonials}}
+
+  <section class="block faq" id="faq" aria-labelledby="faq-title">
+    <div class="wrap faq-grid">
+      <div class="faq-head">
+        <p class="label">{{faq.label}}</p>
+        <h2 id="faq-title">{{faq.title}}</h2>
+        <img class="flute-line" src="{{root}}assets/brand/flute-h.png" alt="" width="800" height="41" loading="lazy">
+      </div>
+      <div class="faq-list">{{faq_items}}</div>
+    </div>
+  </section>
 
   <section class="block contact" id="contact" aria-labelledby="contact-title">
     <div class="wrap contact-grid">
@@ -204,7 +193,6 @@
           <div><dt>{{contact.email}}</dt><dd><a id="email" href="mailto:{{email}}">{{email}}</a> <button class="copy" type="button" id="copy">{{contact.copy}}</button></dd></div>
           <div><dt>{{contact.insta}}</dt><dd><a href="{{instagram}}" target="_blank" rel="noopener">{{instagram_handle}}</a></dd></div>
           <div><dt>{{contact.where}}</dt><dd>{{contact.places}}</dd></div>
-          <div><dt>{{contact.langs}}</dt><dd>English · Deutsch · 中文</dd></div>
         </dl>
       </div>
       <form class="form" id="contact-form" action="https://formsubmit.co/{{email}}" method="POST" novalidate>
@@ -221,17 +209,11 @@
             <p class="err" id="f-mail-err" hidden>{{err.email}}</p>
           </div>
         </div>
-        <div class="field-row">
+        <div class="field-row three">
           <div class="field">
             <label for="f-for">{{f.for}}</label>
             <select id="f-for" name="for"><option>{{o.child}}</option><option>{{o.teen}}</option><option>{{o.adult}}</option></select>
           </div>
-          <div class="field">
-            <label for="f-age">{{f.age}} <span class="opt">({{f.optional}})</span></label>
-            <input id="f-age" type="text" name="age" inputmode="numeric" maxlength="3" autocomplete="off">
-          </div>
-        </div>
-        <div class="field-row">
           <div class="field">
             <label for="f-level">{{f.level}}</label>
             <select id="f-level" name="level"><option>{{o.beginner}}</option><option>{{o.some}}</option><option>{{o.advanced}}</option></select>
@@ -241,15 +223,21 @@
             <select id="f-place" name="place"><option>{{where.bonn}}</option><option>{{where.koln}}</option><option>{{where.online}}</option><option>{{o.unsure}}</option></select>
           </div>
         </div>
-        <div class="field">
-          <label for="f-phone">{{f.phone}} <span class="opt">({{f.optional}})</span></label>
-          <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+        <div class="field-row">
+          <div class="field">
+            <label for="f-age">{{f.age}} <span class="opt">({{f.optional}})</span></label>
+            <input id="f-age" type="text" name="age" inputmode="numeric" maxlength="3" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="f-phone">{{f.phone}} <span class="opt">({{f.optional}})</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
         </div>
         <div class="field">
           <label for="f-msg">{{f.msg}} <span class="opt">({{f.optional}})</span></label>
-          <textarea id="f-msg" name="message" rows="4" placeholder="{{f.ph}}"></textarea>
+          <textarea id="f-msg" name="message" rows="3" placeholder="{{f.ph}}"></textarea>
         </div>
-        <input type="hidden" name="language" value="{{lang_name}}">
+        <input type="hidden" name="language" value="{{lang_title}}">
         <div class="hp" aria-hidden="true"><label for="f-hp">Leave empty</label><input id="f-hp" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
         <button class="btn btn-block" type="submit" id="f-send">{{f.send}}</button>
         <p class="status" id="form-status" role="status" aria-live="polite"></p>
@@ -261,7 +249,7 @@
 
 <footer class="foot">
   <div class="wrap foot-row">
-    <div>
+    <div class="foot-brand">
       <img src="{{root}}assets/brand/logo-mark.png" alt="" width="773" height="256" class="foot-logo" loading="lazy">
       <p>{{footer.tag}}</p>
     </div>

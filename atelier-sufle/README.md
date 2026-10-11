@@ -5,9 +5,11 @@ Website for **Atelier Suflé**: one-to-one flute lessons with Suhsuan Wang in Bo
 Static site, no framework. A small Python script (no dependencies) generates the three language pages from one template.
 
 ```
-index.html, de/index.html, zh/index.html   Generated pages (do not edit by hand)
+index.html, de/, zh-hant/, zh-hans/        Generated pages (do not edit by hand)
 impressum.html, datenschutz.html           Legal pages (German law), edited by hand
-src/content.py                             All texts in EN / DE / 中文 + optional sections
+src/content.py                             All texts in EN / DE / 繁體中文 + optional sections
+                                           (简体中文 is generated from the Traditional text)
+src/make_sound.py                          Generates the soft flute sounds in assets/audio/
 src/template.html                          Page structure
 src/build.py                               Generates the pages, sitemap.xml and robots.txt
 assets/css/site.css, assets/js/site.js     Styles and behaviour
@@ -19,14 +21,14 @@ assets/fonts/                              Self-hosted fonts (no requests to Goo
 ## Editing
 
 1. Change texts in `src/content.py` (or structure in `src/template.html`).
-2. Run `python3 src/build.py`.
+2. Run `python3 src/build.py` (the Simplified Chinese page needs `pip install opencc-python-reimplemented` once).
 3. Commit and push. GitHub Pages republishes automatically.
 
 ### Optional sections (kept off the site until real content exists)
 
 In `src/content.py`, `OPTIONAL`:
 
-- `testimonials`: real, authorised quotes only. Never invent them.
+- `testimonials` + `google_reviews_url`: real reviews only (for example from the Google Business Profile), shown with the note "Reviews from Google, shown unedited". Never invent or edit them: fake reviews are illegal in Germany (UWG).
 - `philosophy`: Suhsuan's teaching philosophy in her own words, per language.
 - `recordings`: her own recordings (MP3 in `assets/audio/`).
 
@@ -42,8 +44,16 @@ Fill one in, rebuild, and the section appears.
 
 1. Push this folder's contents to the root of a public repository `atelier-sufle`.
 2. **Settings → Pages → Deploy from a branch → `main` / `(root)` → Save**.
-3. Live at `https://reissfuji006.github.io/atelier-sufle/` (also `/de/` and `/zh/`).
+3. Live at `https://reissfuji006.github.io/atelier-sufle/` (also `/de/`, `/zh-hant/`, `/zh-hans/`).
 4. Submit `sitemap.xml` in Google Search Console, and add the site link to the Instagram bio.
+
+## SEO checklist (in this order)
+
+1. Publish on GitHub Pages, then add the site to **Google Search Console** and submit `sitemap.xml` (also Bing Webmaster Tools).
+2. Create a **Google Business Profile** "Atelier Suflé" (category: music teacher / flute teacher, service area Bonn and Köln, no public address needed), link the website, add photos, ask students and parents for reviews.
+3. Put the site link in the Instagram bio.
+4. Buy the domain (for example `ateliersufle.de`), set it in Pages and in `SITE_URL`, rebuild.
+5. Listings: music-teacher directories, local family and expat groups in Bonn / Köln, Chinese community groups.
 
 ## Own domain (optional)
 
@@ -51,11 +61,11 @@ Add it in **Settings → Pages → Custom domain**, point the DNS to GitHub Page
 
 ## Sound
 
-The flute samples are made from a real flute recording (A4) from the [tonejs-instruments](https://github.com/Makefully-Studios/tonejs-instruments) set (npm `tonejs-instrument-flute-mp3`, MIT), pitched to B and G with a light reverb. Recordings of Suhsuan playing the same notes can replace them (same file names).
+The notes B, A, G and the tune are synthesized by `src/make_sound.py`: a soft soprano-recorder timbre (near-pure tone, gentle attack, light vibrato), one octave up, quiet (peak -6.5 dBFS), very little reverb, 130 bpm. Regenerate with `python3 src/make_sound.py assets/audio 2 0.46` (octave factor, beat in seconds; keep `BEAT` in `assets/js/site.js` equal to the beat). Recordings of Suhsuan playing the same notes can replace the files (same names).
 
 ## Quality checks run before delivery
 
 - html-validate: no errors on all 5 pages.
-- axe-core (WCAG 2.0/2.1/2.2 A + AA, best practices): no violations on all pages at 390 px and 1280 px.
-- Lighthouse (mobile, local server): Performance 94, Accessibility 100, Best Practices 100, SEO 100.
-- Playwright: layout at 390 / 768 / 1280 px in 3 languages, form validation and sending (simulated service), audio, keyboard use, links.
+- axe-core (WCAG 2.0/2.1/2.2 A + AA, best practices): no violations on all 6 pages at 390 px and 1280 px.
+- Lighthouse (mobile, local server): Performance 96-99, Accessibility 100, Best Practices 100, SEO 100.
+- Playwright (29 checks): layout at 390 / 768 / 1280 px in 4 languages, form validation and sending (simulated service), audio, keyboard use, FAQ, active section marker, links.

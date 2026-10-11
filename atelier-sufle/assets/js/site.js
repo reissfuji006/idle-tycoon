@@ -5,16 +5,37 @@
   const root = document.body.dataset.root || '';
   const $ = id => document.getElementById(id);
 
-  // ---------- Header border on scroll, footer year ----------
+  // ---------- Header: border once scrolled, reading progress, active section marker ----------
   const header = document.querySelector('.top');
-  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
-  window.addEventListener('scroll', onScroll, { passive: true });
+  let ticking = false;
+  const onScroll = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    header.classList.toggle('scrolled', window.scrollY > 8);
+    header.style.setProperty('--p', max > 0 ? Math.min(1, window.scrollY / max).toFixed(4) : 0);
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
+  const links = [...document.querySelectorAll('.main-nav a[data-section]')];
+  if ('IntersectionObserver' in window) {
+    const seen = new Map();
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => seen.set(e.target.id, e.isIntersecting ? e.intersectionRatio : 0));
+      let best = null, ratio = 0;
+      seen.forEach((r, id) => { if (r > ratio) { ratio = r; best = id; } });
+      links.forEach(a => {
+        const on = a.dataset.section === best;
+        a.classList.toggle('active', on);
+        if (on) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-30% 0px -50% 0px', threshold: [0, .25, .5, 1] });
+    links.forEach(a => { const sec = document.getElementById(a.dataset.section); if (sec) io.observe(sec); });
+  }
   $('year').textContent = new Date().getFullYear();
 
   // ---------- Music staff: "Mary Had a Little Lamb" on B A G ----------
   const NS = 'http://www.w3.org/2000/svg';
-  const BEAT = 0.6; // seconds; matches assets/audio/mary.mp3 (100 bpm)
+  const BEAT = 0.46; // seconds; matches assets/audio/mary.mp3 (src/make_sound.py, 130 bpm)
   const melody = [
     { x: 70, y: 72, k: 'b4', f: 493.88, s: 'Ma-', d: 1 },
     { x: 135, y: 80, k: 'a4', f: 440.0, s: 'ry', d: 1 },
