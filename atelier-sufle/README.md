@@ -2,7 +2,7 @@
 
 Website for **Atelier Suflé**: one-to-one flute lessons with Suhsuan Wang in Bonn, Köln and online, in English, German and Chinese.
 
-Static site, no framework. A small Python script (no dependencies) generates the three language pages from one template.
+Static site, no framework. A small Python script generates the four language pages from one template.
 
 ```
 index.html, de/, zh-hant/, zh-hans/        Generated pages (do not edit by hand)
@@ -65,7 +65,7 @@ The notes B, A, G and the tune are synthesized by `src/make_sound.py`: a soft so
 
 ## Quality checks run before delivery
 
-- html-validate: no errors on all 5 pages.
+- html-validate: no errors on all 6 pages.
 - axe-core (WCAG 2.0/2.1/2.2 A + AA, best practices): no violations on all 6 pages at 390 px and 1280 px.
 - Lighthouse (mobile, local server): Performance 96-99, Accessibility 100, Best Practices 100, SEO 100.
 - Playwright (29 checks): layout at 390 / 768 / 1280 px in 4 languages, form validation and sending (simulated service), audio, keyboard use, FAQ, active section marker, links.
